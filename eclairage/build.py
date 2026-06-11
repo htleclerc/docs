@@ -33,9 +33,10 @@ ROOMS = [
 ]
 
 # Luminaires : type, x, z, [options]
-#  spot  = encastre  / susp = suspension / plaf = plafonnier / app = appoint(lampadaire/reglette)
-F_SPOT, F_SUSP, F_PLAF, F_APP = "spot", "susp", "plaf", "app"
+#  spot=encastre / susp=suspension / plaf=plafonnier / app=appoint / cove=ruban LED corniche
+F_SPOT, F_SUSP, F_PLAF, F_APP, F_COVE = "spot", "susp", "plaf", "app", "cove"
 FIX = []
+COVES = []  # rubans LED peripheriques : (x0,z0,x1,z1, nom)
 def grid(x0,z0,x1,z1,nx,nz,typ,**o):
     for i in range(nx):
         for j in range(nz):
@@ -43,36 +44,49 @@ def grid(x0,z0,x1,z1,nx,nz,typ,**o):
             z = z0 + (z1-z0)*(j+0.5)/nz
             FIX.append((typ,round(x,2),round(z,2),o))
 
-# Bureau : 4 spots devant le poste + lampe de bureau
-grid(0.6,0.7,3.0,2.8,2,2,F_SPOT)
+# ================= PROPOSITION 2 - TOUT INDIRECT / AMBIANCE =================
+# Principe : rubans LED en corniche peripherique partout, lampadaires indirects,
+# suspensions deco ; les encastres sont reduits aux seules taches & securite.
+
+# --- Rubans LED corniche (uplight peripherique) ---
+def cove(room_name, inset=0.18):
+    for (nm,x0,z0,x1,z1,area,col) in ROOMS:
+        if nm==room_name:
+            COVES.append((x0+inset,z0+inset,x1-inset,z1-inset,nm)); return
+for r in ["Coin Bureau","Salle détente & jeux","Coin Cuisine","Coin Repas","Salon","Entrée"]:
+    cove(r)
+
+# --- Taches fonctionnelles (spots reduits au strict necessaire) ---
+# Bureau : 2 spots directionnels au-dessus du poste + lampe
+FIX += [(F_SPOT,1.0,1.0,{}),(F_SPOT,2.2,1.0,{})]
 FIX.append((F_APP,0.7,0.7,{"h":1.05,"label":"lampe bureau"}))
-# Salle detente : 6 spots + plafonnier + lampadaire indirect (AJOUT)
-grid(0.7,3.5,3.0,8.4,2,3,F_SPOT)
-FIX.append((F_PLAF,1.6,5.2,{}))
-FIX.append((F_APP,0.7,8.2,{"h":1.55,"label":"lampadaire indirect"}))
-# Buanderie / WC / Entree : plafonniers
-FIX += [(F_PLAF,4.30,1.45,{}),(F_PLAF,3.85,3.30,{}),(F_PLAF,4.30,7.85,{})]
-# Escalier : spots + balisage (securite)
-for j in range(4):
-    FIX.append((F_SPOT,4.10,4.3+j*0.7,{"int":0.7}))
-# Cuisine : 6 spots + 2 suspensions sur ilot + reglette sous meuble (AJOUT)
-grid(5.7,0.7,9.0,2.7,3,2,F_SPOT)
-FIX += [(F_SUSP,6.6,1.6,{"drop":0.95}),(F_SUSP,7.5,1.6,{"drop":0.95})]
-FIX.append((F_APP,8.6,0.55,{"h":2.0,"label":"réglette sous meuble"}))
-# Repas : grappe 3 suspensions + 4 spots peripheriques
+# Cuisine : 3 spots au bord du plan de travail + 2 suspensions ilot + reglette LED
+FIX += [(F_SPOT,6.0,0.8,{}),(F_SPOT,7.3,0.8,{}),(F_SPOT,8.6,0.8,{})]
+FIX += [(F_SUSP,6.6,1.7,{"drop":0.95}),(F_SUSP,7.5,1.7,{"drop":0.95})]
+FIX.append((F_APP,8.6,0.55,{"h":2.0,"label":"réglette LED sous meuble"}))
+# Repas : grappe deco de 3 suspensions (coeur d'ambiance)
 FIX += [(F_SUSP,7.2,4.05,{"drop":0.8}),(F_SUSP,7.5,4.2,{"drop":0.65}),(F_SUSP,7.35,3.85,{"drop":0.95})]
-grid(5.7,3.3,9.0,4.8,2,2,F_SPOT,int=0.6)
-# Salon : plafonnier + 4 spots + lampadaire arc
-FIX.append((F_PLAF,7.0,6.4,{}))
-grid(5.7,5.6,9.0,8.4,2,2,F_SPOT)
-FIX.append((F_APP,9.0,8.3,{"h":1.6,"label":"lampadaire arc"}))
+# Escalier : balisage + spots securite (toujours conserves)
+for j in range(4):
+    FIX.append((F_SPOT,4.10,4.3+j*0.7,{"int":0.6}))
+# Buanderie / WC : plafonnier fonctionnel (pieces techniques)
+FIX += [(F_PLAF,4.30,1.45,{}),(F_PLAF,3.85,3.30,{})]
+
+# --- Appoints d'ambiance (lampadaires indirects / appliques) ---
+FIX += [(F_APP,0.7,4.4,{"h":1.55,"label":"lampadaire indirect"}),
+        (F_APP,0.7,8.2,{"h":1.55,"label":"lampadaire indirect"}),   # Salle detente x2
+        (F_APP,9.0,8.3,{"h":1.6,"label":"lampadaire arc"}),          # Salon
+        (F_APP,5.6,6.2,{"h":1.5,"label":"applique murale"}),         # Salon
+        (F_APP,8.9,3.2,{"h":1.5,"label":"applique murale"})]         # Repas/Salon
 
 FIX_COL = {F_SPOT:(1.0,0.82,0.30), F_SUSP:(1.0,0.49,0.20),
-           F_PLAF:(0.55,0.78,1.0), F_APP:(0.30,0.85,0.55)}
-FIX_LABEL = {F_SPOT:"Spot encastré", F_SUSP:"Suspension",
-             F_PLAF:"Plafonnier", F_APP:"Appoint (lampadaire/réglette)"}
+           F_PLAF:(0.55,0.78,1.0), F_APP:(0.30,0.85,0.55), F_COVE:(0.78,0.49,1.0)}
+FIX_LABEL = {F_SPOT:"Spot tâche/sécurité", F_SUSP:"Suspension déco",
+             F_PLAF:"Plafonnier technique", F_APP:"Appoint (lampadaire/applique/réglette)",
+             F_COVE:"Ruban LED corniche"}
 
 def count(typ): return sum(1 for f in FIX if f[0]==typ)
+def cove_ml(): return round(sum(2*((x1-x0)+(z1-z0)) for (x0,z0,x1,z1,n) in COVES),1)
 
 # ----------------------------------------------------------------------------
 # 2) PLAN 2D  (matplotlib)
@@ -90,6 +104,10 @@ def draw_plan(path, title=True):
         ax.add_patch(Rectangle((x0,z0),x1-x0,z1-z0,facecolor=col,edgecolor="#555",lw=1.2,alpha=0.55))
         cx,cz=(x0+x1)/2,(z0+z1)/2
         ax.text(cx,cz,f"{nm}\n{area}",ha="center",va="center",fontsize=8.5,weight="bold",color="#222")
+    # rubans LED corniche (peripherique)
+    for (x0,z0,x1,z1,nm) in COVES:
+        ax.add_patch(Rectangle((x0,z0),x1-x0,z1-z0,facecolor="none",
+            edgecolor="#c77dff",lw=2.4,ls=(0,(6,3)),alpha=0.95))
     # luminaires
     for (typ,x,z,o) in FIX:
         c = FIX_COL[typ]
@@ -110,13 +128,14 @@ def draw_plan(path, title=True):
     ax.text(-0.42,EXT_D/2,"9100 mm",ha="center",va="center",rotation=90,fontsize=9,color="#444")
     # legende
     from matplotlib.lines import Line2D
-    handles=[Line2D([0],[0],marker="o",color="w",mfc=FIX_COL[F_SPOT],mec="#7a5a00",ms=10,label="Spot encastré"),
-             Line2D([0],[0],marker="v",color="w",mfc=FIX_COL[F_SUSP],mec="#7a3500",ms=11,label="Suspension"),
-             Line2D([0],[0],marker="o",color="w",mfc=FIX_COL[F_PLAF],mec="#28527a",ms=13,label="Plafonnier"),
-             Line2D([0],[0],marker="s",color="w",mfc=FIX_COL[F_APP],mec="#1c5c3a",ms=10,label="Appoint")]
-    ax.legend(handles=handles,loc="upper center",bbox_to_anchor=(0.5,-0.03),ncol=4,frameon=False,fontsize=9)
+    handles=[Line2D([0],[0],marker="o",color="w",mfc=FIX_COL[F_SPOT],mec="#7a5a00",ms=10,label="Spot tâche/sécurité"),
+             Line2D([0],[0],marker="v",color="w",mfc=FIX_COL[F_SUSP],mec="#7a3500",ms=11,label="Suspension déco"),
+             Line2D([0],[0],marker="o",color="w",mfc=FIX_COL[F_PLAF],mec="#28527a",ms=13,label="Plafonnier technique"),
+             Line2D([0],[0],marker="s",color="w",mfc=FIX_COL[F_APP],mec="#1c5c3a",ms=10,label="Appoint"),
+             Line2D([0],[0],color="#c77dff",lw=2.4,ls=(0,(6,3)),label="Ruban LED corniche")]
+    ax.legend(handles=handles,loc="upper center",bbox_to_anchor=(0.5,-0.03),ncol=5,frameon=False,fontsize=8.5)
     if title:
-        ax.set_title("Plan d'éclairage — Proposition  ·  RDC Module 4  (échelle réelle 9,6 × 9,1 m)",
+        ax.set_title("Plan d'éclairage — Proposition 2 « tout indirect »  ·  RDC Module 4  (9,6 × 9,1 m)",
                      fontsize=12,weight="bold",pad=14)
     fig.tight_layout()
     fig.savefig(path,dpi=150,bbox_inches="tight"); plt.close(fig)
@@ -178,11 +197,19 @@ for k,(typ,x,z,o) in enumerate(FIX):
         h=o.get("h",1.4)
         add_box(f"App_{k}", x,z,0.20,0.20, h,0.20, "L_app")
         add_box(f"Pied_{k}", x,z,0.05,0.05, h/2,h, "L_cord")
+# Rubans LED corniche : 4 brins par piece, en hauteur (uplight)
+for k,(x0,z0,x1,z1,nm) in enumerate(COVES):
+    yc=H-0.10; w=x1-x0; d=z1-z0
+    add_box(f"Cove_{k}_N", (x0+x1)/2,z0, w,0.04, yc,0.04, "L_cove")
+    add_box(f"Cove_{k}_S", (x0+x1)/2,z1, w,0.04, yc,0.04, "L_cove")
+    add_box(f"Cove_{k}_O", x0,(z0+z1)/2, 0.04,d, yc,0.04, "L_cove")
+    add_box(f"Cove_{k}_E", x1,(z0+z1)/2, 0.04,d, yc,0.04, "L_cove")
 
 MAT_RGB = {
  "Sol":(0.85,0.80,0.74),"Mur":(0.90,0.88,0.84),"Cloison":(0.80,0.78,0.74),
  "Marche":(0.71,0.60,0.51),"L_spot":FIX_COL[F_SPOT],"L_susp":FIX_COL[F_SUSP],
  "L_plaf":FIX_COL[F_PLAF],"L_app":FIX_COL[F_APP],"L_cord":(0.15,0.15,0.15),
+ "L_cove":FIX_COL[F_COVE],
 }
 for (nm,x0,z0,x1,z1,area,col) in ROOMS:
     MAT_RGB["Z_"+slug(nm)]=col
@@ -284,8 +311,12 @@ def img_fit(path,maxw,maxh):
 
 # --- Couverture ---
 S.append(Spacer(1,8))
-S.append(Paragraph("Proposition d'éclairage",H1))
-S.append(Paragraph("RDC — Module 4  ·  Plan ouvert  ·  9,60 × 9,10 m",H2))
+S.append(Paragraph("Proposition d'éclairage — Variante 2",H1))
+S.append(Paragraph("« Tout indirect / ambiance »  ·  RDC Module 4  ·  9,60 × 9,10 m",H2))
+S.append(Paragraph("<b>Concept :</b> priorité à la lumière indirecte — rubans LED en corniche périphérique "
+   "dans les pièces de vie, lampadaires et appliques d'ambiance, suspensions décoratives. "
+   "Les spots encastrés sont réduits aux seules fonctions de tâche (plan de travail, bureau) "
+   "et de sécurité (escalier).",BODY))
 info=[["Projet","Rdc Module 4"],["Client","IDI"],["Échelle plan","1/50 (A3)"],
       ["Date","2025 — version 1"],["Établi le",datetime.date.today().strftime("%d/%m/%Y")]]
 t=Table(info,colWidths=[35*mm,120*mm])
@@ -331,13 +362,15 @@ S.append(PageBreak())
 # --- Nomenclature ---
 S.append(Paragraph("3. Nomenclature des luminaires",H1))
 rows=[["Type","Qté","Usage / recommandation"]]
-desc={F_SPOT:"Éclairage général diffus, sur variateur par zone",
+desc={F_COVE:f"Corniche périphérique indirecte (~{cove_ml()} ml) — coeur de l'ambiance",
       F_SUSP:"Décoratif Cuisine (îlot) & Repas (table)",
-      F_PLAF:"Buanderie, WC, Entrée, Salon, Détente",
-      F_APP:"Lampadaires indirects + réglette LED sous meuble"}
-for t_ in [F_SPOT,F_SUSP,F_PLAF,F_APP]:
-    rows.append([FIX_LABEL[t_],str(count(t_)),desc[t_]])
-rows.append(["TOTAL",str(len(FIX)),""])
+      F_APP:"Lampadaires indirects, appliques + réglette LED sous meuble",
+      F_SPOT:"Tâche (plan de travail, bureau) & sécurité (escalier) uniquement",
+      F_PLAF:"Pièces techniques : Buanderie, WC"}
+disp={F_COVE:f"{len(COVES)} pièces / ~{cove_ml()} ml"}
+for t_ in [F_COVE,F_SUSP,F_APP,F_SPOT,F_PLAF]:
+    rows.append([FIX_LABEL[t_],disp.get(t_,str(count(t_))),desc[t_]])
+rows.append(["TOTAL points","%d + rubans"%len(FIX),""])
 tn=Table(rows,colWidths=[60*mm,18*mm,95*mm])
 tn.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,0),colors.HexColor("#1b2430")),("TEXTCOLOR",(0,0),(-1,0),colors.white),
   ("FONT",(0,0),(-1,0),"Helvetica-Bold",9),("FONTSIZE",(0,1),(-1,-1),9),("GRID",(0,0),(-1,-1),0.3,colors.HexColor("#ccc")),
@@ -346,12 +379,16 @@ tn.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,0),colors.HexColor("#1b2430")),(
   ("BOTTOMPADDING",(0,0),(-1,-1),4),("TOPPADDING",(0,0),(-1,-1),4)]))
 S.append(tn)
 S.append(Paragraph("4. Circuits & scénarios recommandés",H2))
-for x in ["Circuit A – Général / ménage : tous les encastrés (variateur global).",
+for x in ["Circuit A – Ambiance indirecte : tous les rubans LED corniche (variateur, idéalement tunable white 2700–4000 K).",
           "Circuit B – Repas : grappe de suspensions (variateur dédié).",
-          "Circuit C – Cuisine fonctionnel : spots plan de travail + réglette LED.",
-          "Circuit D – Ambiance : lampadaires + plafonniers déco Salon/Détente.",
-          "Circuit E – Escalier : va-et-vient + balisage (toujours séparé)."]:
+          "Circuit C – Cuisine fonctionnel : spots plan de travail + réglette LED sous meuble.",
+          "Circuit D – Appoints d'ambiance : lampadaires + appliques (Salon / Détente).",
+          "Circuit E – Tâches & sécurité : spots bureau + escalier (va-et-vient + balisage, toujours séparé).",
+          "Circuit F – Pièces techniques : plafonniers Buanderie / WC."]:
     S.append(Paragraph("• "+x,BODY))
+S.append(Paragraph("<b>Note ambiance :</b> alimenter les rubans en 24 V, IRC ≥ 90, ~9–14 W/ml, "
+   "profilés alu avec diffuseur pour éviter l'effet pointillé. La corniche éclaire le plafond "
+   "(lumière rasante douce) ; prévoir une retombée/gorge de 10–15 cm.",SMALL))
 S.append(Spacer(1,8))
 S.append(Paragraph("Livrables associes : plan_eclairage_2D.png · model.obj / model.dae (3D, importable SketchUp) · maquette web eclairage-3d.html.",SMALL))
 
@@ -365,6 +402,7 @@ import json
 rooms_js=json.dumps([{"n":nm,"x0":x0,"z0":z0,"x1":x1,"z1":z1,"a":area,
                       "c":int(c[0]*255)<<16|int(c[1]*255)<<8|int(c[2]*255)} for (nm,x0,z0,x1,z1,area,c) in ROOMS])
 fix_js=json.dumps([{"t":t_,"x":x,"z":z,**o} for (t_,x,z,o) in FIX])
+coves_js=json.dumps([{"x0":x0,"z0":z0,"x1":x1,"z1":z1} for (x0,z0,x1,z1,n) in COVES])
 html=r"""<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Maquette 3D eclairage - RDC Module 4 (cotes reelles)</title>
@@ -389,7 +427,7 @@ border-radius:12px;padding:10px 14px;font-size:11.5px;color:var(--muted)}#legend
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
 #hint{position:fixed;bottom:14px;right:14px;font-size:11px;color:var(--muted);background:rgba(27,31,41,.8);padding:7px 11px;border-radius:10px}
 </style></head><body><div id="app"></div>
-<div id="ui"><h1>Maquette 3D &mdash; eclairage</h1>
+<div id="ui"><h1>Maquette 3D &mdash; Variante 2 (indirect)</h1>
 <div class="sub">RDC Module 4 &middot; cotes reelles 9,6 &times; 9,1 m &middot; H 2,6 m</div>
 <div class="row"><label>Ambiance (jour &harr; nuit)</label><input id="dayNight" type="range" min="0" max="100" value="65"></div>
 <div class="row"><label>Intensite luminaires</label><input id="intensity" type="range" min="0" max="100" value="80"></div>
@@ -401,15 +439,16 @@ border-radius:12px;padding:10px 14px;font-size:11.5px;color:var(--muted)}#legend
 <div><span class="dot" style="background:#ffd27a"></span><b>Spot encastre</b></div>
 <div><span class="dot" style="background:#ff9d5c"></span><b>Suspension</b></div>
 <div><span class="dot" style="background:#9ad0ff"></span><b>Plafonnier</b></div>
-<div><span class="dot" style="background:#7CFFB2"></span><b>Appoint</b></div></div>
+<div><span class="dot" style="background:#7CFFB2"></span><b>Appoint</b></div>
+<div><span class="dot" style="background:#c77dff"></span><b>Ruban LED corniche</b></div></div>
 <div id="hint">Souris : tourner &middot; molette : zoom &middot; clic droit : deplacer</div>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script type="module">
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-const ROOMS=__ROOMS__, FIX=__FIX__;
+const ROOMS=__ROOMS__, FIX=__FIX__, COVES=__COVES__;
 const W=9.6,D=9.1,H=2.6,WALL=0.3;
-const COL={spot:0xffd27a,susp:0xff9d5c,plaf:0x9ad0ff,app:0x7CFFB2};
+const COL={spot:0xffd27a,susp:0xff9d5c,plaf:0x9ad0ff,app:0x7CFFB2,cove:0xc77dff};
 const app=document.getElementById('app');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x11141a);
 const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -454,6 +493,20 @@ function addFix(f){const type=f.t,color=COL[type];let y=H-.02,geo;
   cone.position.set(f.x,h/2,f.z);coneGroup.add(cone);}
  fixtures.push({g,light,cone,baseInt});}
 FIX.forEach(addFix);
+// Rubans LED corniche : brins emissifs + lueur (uplight indirect)
+const coveMeshes=[];
+COVES.forEach(cv=>{const yc=H-0.10,col=COL.cove;
+ const seg=[[(cv.x0+cv.x1)/2,cv.z0,cv.x1-cv.x0,0.04],[(cv.x0+cv.x1)/2,cv.z1,cv.x1-cv.x0,0.04],
+            [cv.x0,(cv.z0+cv.z1)/2,0.04,cv.z1-cv.z0],[cv.x1,(cv.z0+cv.z1)/2,0.04,cv.z1-cv.z0]];
+ seg.forEach(s=>{const m=new THREE.Mesh(new THREE.BoxGeometry(s[2],0.04,s[3]),
+   new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:1.5}));
+   m.position.set(s[0],yc,s[1]);scene.add(m);coveMeshes.push(m);});
+ // quelques sources ponctuelles pour la lueur sur le plafond
+ const cx=(cv.x0+cv.x1)/2,cz=(cv.z0+cv.z1)/2;
+ [[cv.x0,cz],[cv.x1,cz],[cx,cv.z0],[cx,cv.z1]].forEach(p=>{
+   const l=new THREE.PointLight(0xe6ccff,3.5,5,2);l.position.set(p[0],yc+0.05,p[1]);scene.add(l);
+   fixtures.push({g:{position:l.position,children:[]},light:l,cone:null,baseInt:3.5});});
+});
 const labelSprites=[];
 function roundRect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
 function label(text,sub,x,z){const cv=document.createElement('canvas');cv.width=256;cv.height=96;const c=cv.getContext('2d');
@@ -474,7 +527,7 @@ applyI();$('dayNight').dispatchEvent(new Event('input'));
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
 (function loop(){requestAnimationFrame(loop);controls.update();renderer.render(scene,camera);})();
 </script></body></html>"""
-html=html.replace("__ROOMS__",rooms_js).replace("__FIX__",fix_js)
+html=html.replace("__ROOMS__",rooms_js).replace("__FIX__",fix_js).replace("__COVES__",coves_js)
 open(os.path.join(OUT,"..","eclairage-3d.html"),"w").write(html)
 print("OK HTML 3D (cotes reelles)")
 print("Luminaires:",{t_:count(t_) for t_ in [F_SPOT,F_SUSP,F_PLAF,F_APP]},"total",len(FIX))

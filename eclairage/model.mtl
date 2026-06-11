@@ -52,6 +52,12 @@ Ka 0.045 0.045 0.045
 d 1.0
 illum 1
 
+newmtl L_cove
+Kd 0.780 0.490 1.000
+Ka 0.234 0.147 0.300
+d 1.0
+illum 1
+
 newmtl Z_Coin_Bureau
 Kd 0.720 0.830 0.770
 Ka 0.216 0.249 0.231

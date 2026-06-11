@@ -22,7 +22,7 @@ border-radius:12px;padding:10px 14px;font-size:11.5px;color:var(--muted)}#legend
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
 #hint{position:fixed;bottom:14px;right:14px;font-size:11px;color:var(--muted);background:rgba(27,31,41,.8);padding:7px 11px;border-radius:10px}
 </style></head><body><div id="app"></div>
-<div id="ui"><h1>Maquette 3D &mdash; eclairage</h1>
+<div id="ui"><h1>Maquette 3D &mdash; Variante 2 (indirect)</h1>
 <div class="sub">RDC Module 4 &middot; cotes reelles 9,6 &times; 9,1 m &middot; H 2,6 m</div>
 <div class="row"><label>Ambiance (jour &harr; nuit)</label><input id="dayNight" type="range" min="0" max="100" value="65"></div>
 <div class="row"><label>Intensite luminaires</label><input id="intensity" type="range" min="0" max="100" value="80"></div>
@@ -34,15 +34,16 @@ border-radius:12px;padding:10px 14px;font-size:11.5px;color:var(--muted)}#legend
 <div><span class="dot" style="background:#ffd27a"></span><b>Spot encastre</b></div>
 <div><span class="dot" style="background:#ff9d5c"></span><b>Suspension</b></div>
 <div><span class="dot" style="background:#9ad0ff"></span><b>Plafonnier</b></div>
-<div><span class="dot" style="background:#7CFFB2"></span><b>Appoint</b></div></div>
+<div><span class="dot" style="background:#7CFFB2"></span><b>Appoint</b></div>
+<div><span class="dot" style="background:#c77dff"></span><b>Ruban LED corniche</b></div></div>
 <div id="hint">Souris : tourner &middot; molette : zoom &middot; clic droit : deplacer</div>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script type="module">
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-const ROOMS=[{"n": "Coin Bureau", "x0": 0.3, "z0": 0.3, "x1": 3.3, "z1": 3.09, "a": "8,90 m\u00b2", "c": 12047300}, {"n": "Salle d\u00e9tente & jeux", "x0": 0.3, "z0": 3.09, "x1": 3.3, "z1": 8.8, "a": "15,41 m\u00b2", "c": 13222368}, {"n": "Buanderie", "x0": 3.3, "z0": 0.3, "x1": 5.3, "z1": 2.67, "a": "5,07 m\u00b2", "c": 14077109}, {"n": "WC", "x0": 3.3, "z0": 2.67, "x1": 4.4, "z1": 3.94, "a": "", "c": 14077109}, {"n": "Escalier", "x0": 3.3, "z0": 3.94, "x1": 5.3, "z1": 6.9, "a": "", "c": 13415838}, {"n": "Entr\u00e9e", "x0": 3.3, "z0": 6.9, "x1": 5.3, "z1": 8.8, "a": "5,5 m\u00b2", "c": 13029851}, {"n": "Coin Cuisine", "x0": 5.3, "z0": 0.3, "x1": 9.3, "z1": 3.0, "a": "~9 m\u00b2", "c": 14730940}, {"n": "Coin Repas", "x0": 5.3, "z0": 3.0, "x1": 9.3, "z1": 5.1, "a": "7 m\u00b2", "c": 15257253}, {"n": "Salon", "x0": 5.3, "z0": 5.1, "x1": 9.3, "z1": 8.8, "a": "10,3 m\u00b2", "c": 12373728}], FIX=[{"t": "spot", "x": 1.2, "z": 1.22}, {"t": "spot", "x": 1.2, "z": 2.27}, {"t": "spot", "x": 2.4, "z": 1.22}, {"t": "spot", "x": 2.4, "z": 2.27}, {"t": "app", "x": 0.7, "z": 0.7, "h": 1.05, "label": "lampe bureau"}, {"t": "spot", "x": 1.27, "z": 4.32}, {"t": "spot", "x": 1.27, "z": 5.95}, {"t": "spot", "x": 1.27, "z": 7.58}, {"t": "spot", "x": 2.42, "z": 4.32}, {"t": "spot", "x": 2.42, "z": 5.95}, {"t": "spot", "x": 2.42, "z": 7.58}, {"t": "plaf", "x": 1.6, "z": 5.2}, {"t": "app", "x": 0.7, "z": 8.2, "h": 1.55, "label": "lampadaire indirect"}, {"t": "plaf", "x": 4.3, "z": 1.45}, {"t": "plaf", "x": 3.85, "z": 3.3}, {"t": "plaf", "x": 4.3, "z": 7.85}, {"t": "spot", "x": 4.1, "z": 4.3, "int": 0.7}, {"t": "spot", "x": 4.1, "z": 5.0, "int": 0.7}, {"t": "spot", "x": 4.1, "z": 5.699999999999999, "int": 0.7}, {"t": "spot", "x": 4.1, "z": 6.3999999999999995, "int": 0.7}, {"t": "spot", "x": 6.25, "z": 1.2}, {"t": "spot", "x": 6.25, "z": 2.2}, {"t": "spot", "x": 7.35, "z": 1.2}, {"t": "spot", "x": 7.35, "z": 2.2}, {"t": "spot", "x": 8.45, "z": 1.2}, {"t": "spot", "x": 8.45, "z": 2.2}, {"t": "susp", "x": 6.6, "z": 1.6, "drop": 0.95}, {"t": "susp", "x": 7.5, "z": 1.6, "drop": 0.95}, {"t": "app", "x": 8.6, "z": 0.55, "h": 2.0, "label": "r\u00e9glette sous meuble"}, {"t": "susp", "x": 7.2, "z": 4.05, "drop": 0.8}, {"t": "susp", "x": 7.5, "z": 4.2, "drop": 0.65}, {"t": "susp", "x": 7.35, "z": 3.85, "drop": 0.95}, {"t": "spot", "x": 6.53, "z": 3.67, "int": 0.6}, {"t": "spot", "x": 6.53, "z": 4.42, "int": 0.6}, {"t": "spot", "x": 8.18, "z": 3.67, "int": 0.6}, {"t": "spot", "x": 8.18, "z": 4.42, "int": 0.6}, {"t": "plaf", "x": 7.0, "z": 6.4}, {"t": "spot", "x": 6.53, "z": 6.3}, {"t": "spot", "x": 6.53, "z": 7.7}, {"t": "spot", "x": 8.18, "z": 6.3}, {"t": "spot", "x": 8.18, "z": 7.7}, {"t": "app", "x": 9.0, "z": 8.3, "h": 1.6, "label": "lampadaire arc"}];
+const ROOMS=[{"n": "Coin Bureau", "x0": 0.3, "z0": 0.3, "x1": 3.3, "z1": 3.09, "a": "8,90 m\u00b2", "c": 12047300}, {"n": "Salle d\u00e9tente & jeux", "x0": 0.3, "z0": 3.09, "x1": 3.3, "z1": 8.8, "a": "15,41 m\u00b2", "c": 13222368}, {"n": "Buanderie", "x0": 3.3, "z0": 0.3, "x1": 5.3, "z1": 2.67, "a": "5,07 m\u00b2", "c": 14077109}, {"n": "WC", "x0": 3.3, "z0": 2.67, "x1": 4.4, "z1": 3.94, "a": "", "c": 14077109}, {"n": "Escalier", "x0": 3.3, "z0": 3.94, "x1": 5.3, "z1": 6.9, "a": "", "c": 13415838}, {"n": "Entr\u00e9e", "x0": 3.3, "z0": 6.9, "x1": 5.3, "z1": 8.8, "a": "5,5 m\u00b2", "c": 13029851}, {"n": "Coin Cuisine", "x0": 5.3, "z0": 0.3, "x1": 9.3, "z1": 3.0, "a": "~9 m\u00b2", "c": 14730940}, {"n": "Coin Repas", "x0": 5.3, "z0": 3.0, "x1": 9.3, "z1": 5.1, "a": "7 m\u00b2", "c": 15257253}, {"n": "Salon", "x0": 5.3, "z0": 5.1, "x1": 9.3, "z1": 8.8, "a": "10,3 m\u00b2", "c": 12373728}], FIX=[{"t": "spot", "x": 1.0, "z": 1.0}, {"t": "spot", "x": 2.2, "z": 1.0}, {"t": "app", "x": 0.7, "z": 0.7, "h": 1.05, "label": "lampe bureau"}, {"t": "spot", "x": 6.0, "z": 0.8}, {"t": "spot", "x": 7.3, "z": 0.8}, {"t": "spot", "x": 8.6, "z": 0.8}, {"t": "susp", "x": 6.6, "z": 1.7, "drop": 0.95}, {"t": "susp", "x": 7.5, "z": 1.7, "drop": 0.95}, {"t": "app", "x": 8.6, "z": 0.55, "h": 2.0, "label": "r\u00e9glette LED sous meuble"}, {"t": "susp", "x": 7.2, "z": 4.05, "drop": 0.8}, {"t": "susp", "x": 7.5, "z": 4.2, "drop": 0.65}, {"t": "susp", "x": 7.35, "z": 3.85, "drop": 0.95}, {"t": "spot", "x": 4.1, "z": 4.3, "int": 0.6}, {"t": "spot", "x": 4.1, "z": 5.0, "int": 0.6}, {"t": "spot", "x": 4.1, "z": 5.699999999999999, "int": 0.6}, {"t": "spot", "x": 4.1, "z": 6.3999999999999995, "int": 0.6}, {"t": "plaf", "x": 4.3, "z": 1.45}, {"t": "plaf", "x": 3.85, "z": 3.3}, {"t": "app", "x": 0.7, "z": 4.4, "h": 1.55, "label": "lampadaire indirect"}, {"t": "app", "x": 0.7, "z": 8.2, "h": 1.55, "label": "lampadaire indirect"}, {"t": "app", "x": 9.0, "z": 8.3, "h": 1.6, "label": "lampadaire arc"}, {"t": "app", "x": 5.6, "z": 6.2, "h": 1.5, "label": "applique murale"}, {"t": "app", "x": 8.9, "z": 3.2, "h": 1.5, "label": "applique murale"}], COVES=[{"x0": 0.48, "z0": 0.48, "x1": 3.1199999999999997, "z1": 2.9099999999999997}, {"x0": 0.48, "z0": 3.27, "x1": 3.1199999999999997, "z1": 8.620000000000001}, {"x0": 5.4799999999999995, "z0": 0.48, "x1": 9.120000000000001, "z1": 2.82}, {"x0": 5.4799999999999995, "z0": 3.18, "x1": 9.120000000000001, "z1": 4.92}, {"x0": 5.4799999999999995, "z0": 5.279999999999999, "x1": 9.120000000000001, "z1": 8.620000000000001}, {"x0": 3.48, "z0": 7.08, "x1": 5.12, "z1": 8.620000000000001}];
 const W=9.6,D=9.1,H=2.6,WALL=0.3;
-const COL={spot:0xffd27a,susp:0xff9d5c,plaf:0x9ad0ff,app:0x7CFFB2};
+const COL={spot:0xffd27a,susp:0xff9d5c,plaf:0x9ad0ff,app:0x7CFFB2,cove:0xc77dff};
 const app=document.getElementById('app');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x11141a);
 const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -87,6 +88,20 @@ function addFix(f){const type=f.t,color=COL[type];let y=H-.02,geo;
   cone.position.set(f.x,h/2,f.z);coneGroup.add(cone);}
  fixtures.push({g,light,cone,baseInt});}
 FIX.forEach(addFix);
+// Rubans LED corniche : brins emissifs + lueur (uplight indirect)
+const coveMeshes=[];
+COVES.forEach(cv=>{const yc=H-0.10,col=COL.cove;
+ const seg=[[(cv.x0+cv.x1)/2,cv.z0,cv.x1-cv.x0,0.04],[(cv.x0+cv.x1)/2,cv.z1,cv.x1-cv.x0,0.04],
+            [cv.x0,(cv.z0+cv.z1)/2,0.04,cv.z1-cv.z0],[cv.x1,(cv.z0+cv.z1)/2,0.04,cv.z1-cv.z0]];
+ seg.forEach(s=>{const m=new THREE.Mesh(new THREE.BoxGeometry(s[2],0.04,s[3]),
+   new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:1.5}));
+   m.position.set(s[0],yc,s[1]);scene.add(m);coveMeshes.push(m);});
+ // quelques sources ponctuelles pour la lueur sur le plafond
+ const cx=(cv.x0+cv.x1)/2,cz=(cv.z0+cv.z1)/2;
+ [[cv.x0,cz],[cv.x1,cz],[cx,cv.z0],[cx,cv.z1]].forEach(p=>{
+   const l=new THREE.PointLight(0xe6ccff,3.5,5,2);l.position.set(p[0],yc+0.05,p[1]);scene.add(l);
+   fixtures.push({g:{position:l.position,children:[]},light:l,cone:null,baseInt:3.5});});
+});
 const labelSprites=[];
 function roundRect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
 function label(text,sub,x,z){const cv=document.createElement('canvas');cv.width=256;cv.height=96;const c=cv.getContext('2d');
