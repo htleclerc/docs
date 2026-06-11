@@ -1,326 +1,109 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Plan d'éclairage — Proposition 3D (RDC)</title>
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Maquette 3D eclairage - RDC Module 4 (cotes reelles)</title>
 <style>
-  :root { --bg:#11141a; --panel:#1b1f29; --txt:#e7ecf3; --muted:#9aa6b8; --accent:#ffcf6b; }
-  * { box-sizing:border-box; }
-  html,body { margin:0; height:100%; background:var(--bg); color:var(--txt);
-    font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; overflow:hidden; }
-  #app { position:fixed; inset:0; }
-  #ui { position:fixed; top:14px; left:14px; background:rgba(27,31,41,.92);
-    border:1px solid #2a3140; border-radius:14px; padding:14px 16px; width:268px;
-    backdrop-filter:blur(6px); box-shadow:0 8px 30px rgba(0,0,0,.45); }
-  #ui h1 { font-size:15px; margin:0 0 2px; }
-  #ui .sub { font-size:11px; color:var(--muted); margin-bottom:12px; }
-  .row { display:flex; align-items:center; justify-content:space-between; margin:9px 0; font-size:13px; }
-  .row label { color:var(--txt); }
-  input[type=range]{ width:120px; accent-color:var(--accent); }
-  button { background:#222836; color:var(--txt); border:1px solid #313a4c; border-radius:9px;
-    padding:7px 10px; font-size:12px; cursor:pointer; width:100%; margin-top:4px; }
-  button:hover { border-color:var(--accent); }
-  .switch { position:relative; width:40px; height:22px; }
-  .switch input{ opacity:0; width:0; height:0; }
-  .slider { position:absolute; inset:0; background:#39414f; border-radius:22px; transition:.2s; cursor:pointer; }
-  .slider:before{ content:""; position:absolute; height:16px; width:16px; left:3px; top:3px;
-    background:#cdd5e2; border-radius:50%; transition:.2s; }
-  input:checked + .slider{ background:var(--accent); }
-  input:checked + .slider:before{ transform:translateX(18px); background:#2a2210; }
-  #legend { position:fixed; bottom:14px; left:14px; background:rgba(27,31,41,.92);
-    border:1px solid #2a3140; border-radius:12px; padding:10px 14px; font-size:11.5px; color:var(--muted); }
-  #legend b{ color:var(--txt); }
-  .dot{ display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:middle; }
-  #hint { position:fixed; bottom:14px; right:14px; font-size:11px; color:var(--muted);
-    background:rgba(27,31,41,.8); padding:7px 11px; border-radius:10px; }
-</style>
-</head>
-<body>
-<div id="app"></div>
-
-<div id="ui">
-  <h1>Proposition d'éclairage — 3D</h1>
-  <div class="sub">RDC plan ouvert · ~65 m² · cliquez-glissez pour tourner</div>
-  <div class="row"><label>Ambiance (jour ↔ nuit)</label><input id="dayNight" type="range" min="0" max="100" value="70"></div>
-  <div class="row"><label>Intensité luminaires</label><input id="intensity" type="range" min="0" max="100" value="80"></div>
-  <div class="row"><label>Plafond</label>
-    <span class="switch"><input id="ceiling" type="checkbox"><span class="slider"></span></span></div>
-  <div class="row"><label>Cône de lumière</label>
-    <span class="switch"><input id="cones" type="checkbox" checked><span class="slider"></span></span></div>
-  <div class="row"><label>Étiquettes zones</label>
-    <span class="switch"><input id="labels" type="checkbox" checked><span class="slider"></span></span></div>
-  <button id="reset">↺ Recentrer la vue</button>
-</div>
-
+:root{--bg:#11141a;--accent:#ffcf6b;--txt:#e7ecf3;--muted:#9aa6b8}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);
+font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;overflow:hidden}
+#app{position:fixed;inset:0}
+#ui{position:fixed;top:14px;left:14px;background:rgba(27,31,41,.92);border:1px solid #2a3140;
+border-radius:14px;padding:14px 16px;width:266px;backdrop-filter:blur(6px)}
+#ui h1{font-size:15px;margin:0 0 2px}#ui .sub{font-size:11px;color:var(--muted);margin-bottom:12px}
+.row{display:flex;align-items:center;justify-content:space-between;margin:9px 0;font-size:13px}
+input[type=range]{width:120px;accent-color:var(--accent)}
+button{background:#222836;color:var(--txt);border:1px solid #313a4c;border-radius:9px;padding:7px 10px;
+font-size:12px;cursor:pointer;width:100%;margin-top:4px}button:hover{border-color:var(--accent)}
+.switch{position:relative;width:40px;height:22px}.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:#39414f;border-radius:22px;transition:.2s;cursor:pointer}
+.slider:before{content:"";position:absolute;height:16px;width:16px;left:3px;top:3px;background:#cdd5e2;border-radius:50%;transition:.2s}
+input:checked+.slider{background:var(--accent)}input:checked+.slider:before{transform:translateX(18px);background:#2a2210}
+#legend{position:fixed;bottom:14px;left:14px;background:rgba(27,31,41,.92);border:1px solid #2a3140;
+border-radius:12px;padding:10px 14px;font-size:11.5px;color:var(--muted)}#legend b{color:var(--txt)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+#hint{position:fixed;bottom:14px;right:14px;font-size:11px;color:var(--muted);background:rgba(27,31,41,.8);padding:7px 11px;border-radius:10px}
+</style></head><body><div id="app"></div>
+<div id="ui"><h1>Maquette 3D &mdash; eclairage</h1>
+<div class="sub">RDC Module 4 &middot; cotes reelles 9,6 &times; 9,1 m &middot; H 2,6 m</div>
+<div class="row"><label>Ambiance (jour &harr; nuit)</label><input id="dayNight" type="range" min="0" max="100" value="65"></div>
+<div class="row"><label>Intensite luminaires</label><input id="intensity" type="range" min="0" max="100" value="80"></div>
+<div class="row"><label>Plafond</label><span class="switch"><input id="ceiling" type="checkbox"><span class="slider"></span></span></div>
+<div class="row"><label>Cone de lumiere</label><span class="switch"><input id="cones" type="checkbox" checked><span class="slider"></span></span></div>
+<div class="row"><label>Etiquettes zones</label><span class="switch"><input id="labels" type="checkbox" checked><span class="slider"></span></span></div>
+<button id="reset">&#8634; Recentrer</button></div>
 <div id="legend">
-  <div><span class="dot" style="background:#ffd27a"></span><b>Spot encastré</b> (général)</div>
-  <div><span class="dot" style="background:#ff9d5c"></span><b>Suspension</b> (repas / bar)</div>
-  <div><span class="dot" style="background:#9ad0ff"></span><b>Plafonnier</b> (technique / circulation)</div>
-  <div><span class="dot" style="background:#7CFFB2"></span><b>Appoint</b> (lampadaire / réglette LED)</div>
-</div>
-<div id="hint">Souris : tourner · molette : zoom · clic droit : déplacer</div>
-
-<script type="importmap">
-{ "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-}}
-</script>
-
+<div><span class="dot" style="background:#ffd27a"></span><b>Spot encastre</b></div>
+<div><span class="dot" style="background:#ff9d5c"></span><b>Suspension</b></div>
+<div><span class="dot" style="background:#9ad0ff"></span><b>Plafonnier</b></div>
+<div><span class="dot" style="background:#7CFFB2"></span><b>Appoint</b></div></div>
+<div id="hint">Souris : tourner &middot; molette : zoom &middot; clic droit : deplacer</div>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script type="module">
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-
-// ---------- Scene ----------
-const app = document.getElementById('app');
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x11141a);
-
-const renderer = new THREE.WebGLRenderer({ antialias:true });
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-renderer.setSize(innerWidth, innerHeight);
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-app.appendChild(renderer.domElement);
-
-const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.1, 200);
-const HOME = new THREE.Vector3(10.5, 11, 11.5);
-camera.position.copy(HOME);
-
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.target.set(4.15, 0, 4.15);
-controls.maxPolarAngle = Math.PI/2.05;
-
-// ---------- Ambient / sun ----------
-const ambient = new THREE.AmbientLight(0xffffff, 0.35);
-scene.add(ambient);
-const sun = new THREE.DirectionalLight(0xfff2dd, 0.7);
-sun.position.set(9, 14, 6);
-sun.castShadow = true;
-sun.shadow.mapSize.set(2048,2048);
-sun.shadow.camera.left=-12; sun.shadow.camera.right=12;
-sun.shadow.camera.top=12; sun.shadow.camera.bottom=-12;
-scene.add(sun);
-
-// ---------- Building footprint (meters, ~8.3 x 8.3) ----------
-const W = 8.3, D = 8.3, H = 2.6;   // largeur, profondeur, hauteur sous plafond
-
-// Floor
-const floorMat = new THREE.MeshStandardMaterial({ color:0xd9cdbd, roughness:0.95 });
-const floor = new THREE.Mesh(new THREE.BoxGeometry(W, 0.12, D), floorMat);
-floor.position.set(W/2, -0.06, D/2);
-floor.receiveShadow = true;
-scene.add(floor);
-
-// Ceiling (toggle)
-const ceilMat = new THREE.MeshStandardMaterial({ color:0xf3f1ee, roughness:1, side:THREE.DoubleSide });
-const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(W, D), ceilMat);
-ceiling.rotation.x = Math.PI/2;
-ceiling.position.set(W/2, H, D/2);
-ceiling.receiveShadow = true;
-ceiling.visible = false;
-scene.add(ceiling);
-
-// Outer walls (low) + helper to build a wall
-const wallMat = new THREE.MeshStandardMaterial({ color:0xe7e2da, roughness:1 });
-function wall(x,z,w,d,h=H){
-  const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), wallMat);
-  m.position.set(x, h/2, z); m.castShadow=true; m.receiveShadow=true; scene.add(m);
-  return m;
-}
-const t = 0.12; // épaisseur murs
-wall(W/2, 0, W, t);      // nord
-wall(W/2, D, W, t);      // sud
-wall(0, D/2, t, D);      // ouest
-wall(W, D/2, t, D);      // est
-
-// ---------- Zones (x0,z0,x1,z1, name, color, area) ----------
-const zones = [
-  { x0:0.1, z0:0.1, x1:3.4, z1:3.0, name:'Bureau',        area:'8,90 m²', c:0xb9d4c4 },
-  { x0:0.1, z0:3.0, x1:3.4, z1:8.2, name:'Coin détente',  area:'15,41 m²', c:0xc9c2e0 },
-  { x0:3.4, z0:0.1, x1:4.85, z1:1.85, name:'Buanderie',   area:'5,07 m²', c:0xd6cdb6 },
-  { x0:3.4, z0:1.85, x1:4.55, z1:3.05, name:'WC',         area:'',        c:0xd6cdb6 },
-  { x0:3.4, z0:3.05, x1:4.85, z1:6.4, name:'Escalier',    area:'',        c:0xcdb5a0 },
-  { x0:3.4, z0:6.4, x1:4.85, z1:8.2, name:'Entrée',       area:'5,5 m²',  c:0xc7d2dc },
-  { x0:4.85,z0:0.1, x1:8.2, z1:2.55, name:'Coin cuisine', area:'~9 m²',   c:0xe0c7bd },
-  { x0:4.85,z0:2.55,x1:8.2, z1:4.55, name:'Coin repas',   area:'7 m²',    c:0xe8cfa6 },
-  { x0:4.85,z0:4.55,x1:8.2, z1:8.2, name:'Coin salon',    area:'10,3 m²', c:0xbdd0e0 },
-];
-
-// Colored floor pads per zone for readability
-zones.forEach(z=>{
-  const w=z.x1-z.x0, d=z.z1-z.z0;
-  const pad = new THREE.Mesh(new THREE.PlaneGeometry(w-0.06,d-0.06),
-    new THREE.MeshStandardMaterial({color:z.c, roughness:1, transparent:true, opacity:0.55}));
-  pad.rotation.x = -Math.PI/2;
-  pad.position.set((z.x0+z.x1)/2, 0.011, (z.z0+z.z1)/2);
-  pad.receiveShadow = true; scene.add(pad);
-});
-
-// Low partitions between left / center / right blocks
-wall(3.4, 1.5, t, 3.0);          // bureau/buanderie sep (partial)
-wall(4.85, 4.0, t, 8.0, H);      // est partition (cuisine/repas/salon vs centre)
-// staircase steps (simple)
-const stepMat = new THREE.MeshStandardMaterial({color:0xb59a82, roughness:1});
-for(let i=0;i<10;i++){
-  const s = new THREE.Mesh(new THREE.BoxGeometry(1.3,0.16,0.32), stepMat);
-  s.position.set(4.1, 0.08+i*0.16, 3.3+i*0.30);
-  s.castShadow=true; s.receiveShadow=true; scene.add(s);
-}
-
-// ---------- Light fixtures ----------
-const fixtures = [];          // {mesh, light, cone, type, baseInt}
-const coneGroup = new THREE.Group(); scene.add(coneGroup);
-
-const COL = {
-  spot:0xffd27a, susp:0xff9d5c, plaf:0x9ad0ff, point:0x7CFFB2
-};
-
-function addFixture(x, z, type, opts={}){
-  const y = opts.y ?? (H - 0.02);
-  const color = COL[type];
-  const g = new THREE.Group(); g.position.set(x, y, z); scene.add(g);
-
-  // visible fixture body (emissive)
-  let geo, size;
-  if(type==='spot'){ geo=new THREE.CylinderGeometry(0.07,0.07,0.04,20); size=0.07; }
-  else if(type==='susp'){ geo=new THREE.ConeGeometry(0.13,0.22,24); size=0.13; }
-  else if(type==='plaf'){ geo=new THREE.CylinderGeometry(0.20,0.20,0.05,28); size=0.20; }
-  else { geo=new THREE.SphereGeometry(0.10,18,18); size=0.10; } // point/appoint
-  const mat = new THREE.MeshStandardMaterial({ color, emissive:color, emissiveIntensity:1.4, roughness:0.4 });
-  const body = new THREE.Mesh(geo, mat);
-
-  // suspension: drop cord
-  if(type==='susp'){
-    const drop = opts.drop ?? 0.7;
-    g.position.y = H - drop;
-    const cord = new THREE.Mesh(new THREE.CylinderGeometry(0.006,0.006,drop,6),
-      new THREE.MeshStandardMaterial({color:0x222222}));
-    cord.position.y = drop/2; g.add(cord);
-  }
-  if(type==='point'){ // appoint posé : pied
-    g.position.y = opts.y ?? 1.3;
-  }
-  g.add(body);
-
-  // actual light
-  const baseInt = opts.int ?? (type==='spot'?6: type==='susp'?10: type==='plaf'?14: 8);
-  let light;
-  if(type==='spot' || type==='susp'){
-    light = new THREE.SpotLight(0xffe6c0, baseInt, 8, type==='spot'?0.85:0.95, 0.5, 1.6);
-    const tgt = new THREE.Object3D(); tgt.position.set(x, 0, z); scene.add(tgt);
-    light.position.copy(g.position); light.target = tgt;
-  } else {
-    light = new THREE.PointLight(0xffe9cf, baseInt, 9, 1.8);
-    light.position.copy(g.position);
-  }
-  light.castShadow = false;
-  scene.add(light);
-
-  // light cone helper
-  let cone=null;
-  if(type==='spot' || type==='susp'){
-    const h = g.position.y;
-    const r = h*Math.tan(type==='spot'?0.7:0.85);
-    cone = new THREE.Mesh(new THREE.ConeGeometry(r, h, 24, 1, true),
-      new THREE.MeshBasicMaterial({color:0xffe6b0, transparent:true, opacity:0.07, side:THREE.DoubleSide, depthWrite:false}));
-    cone.position.set(x, h/2, z);
-    coneGroup.add(cone);
-  }
-  fixtures.push({ g, light, cone, type, baseInt });
-}
-
-// --- Bureau : 4 spots (devant le poste) + lampe d'appoint ---
-[[0.9,0.8],[2.3,0.8],[0.9,2.1],[2.3,2.1]].forEach(p=>addFixture(p[0],p[1],'spot'));
-addFixture(0.75,0.7,'point',{y:1.05,int:5}); // lampe de bureau
-
-// --- Coin détente : luminaire 3 spots + plafonnier + 2 spots + lampadaire (ajout) ---
-addFixture(1.4,4.4,'plaf',{int:13});
-[[0.8,4.4],[2.0,4.4]].forEach(p=>addFixture(p[0],p[1],'spot'));
-[[1.0,6.4],[2.2,6.4],[1.6,7.2]].forEach(p=>addFixture(p[0],p[1],'spot'));
-addFixture(0.5,7.6,'point',{y:1.5,int:7}); // lampadaire indirect (recommandé)
-
-// --- Buanderie / WC / Entrée : plafonniers ---
-addFixture(4.1,1.0,'plaf',{int:11});
-addFixture(3.95,2.45,'plaf',{int:9});
-addFixture(4.1,7.3,'plaf',{int:12});
-
-// --- Escalier : spots + balise (sécurité) ---
-[[4.0,3.6],[4.0,4.4],[4.0,5.2],[4.0,6.0]].forEach(p=>addFixture(p[0],p[1],'spot',{int:5}));
-
-// --- Cuisine : 5 spots + 2 suspensions sur bar + réglette sous meuble ---
-[[5.4,0.8],[6.6,0.8],[7.6,0.8],[5.8,2.0],[7.2,2.0]].forEach(p=>addFixture(p[0],p[1],'spot'));
-addFixture(5.9,1.5,'susp',{drop:0.9,int:8});
-addFixture(6.6,1.5,'susp',{drop:0.9,int:8});
-addFixture(7.7,0.55,'point',{y:1.5,int:4}); // réglette sous meuble (symbolique)
-
-// --- Coin repas : grappe de 3 suspensions + 4 spots périphériques ---
-addFixture(6.4,3.55,'susp',{drop:0.75,int:11});
-addFixture(6.7,3.7,'susp',{drop:0.6,int:9});
-addFixture(6.55,3.35,'susp',{drop:0.9,int:9});
-[[5.2,2.9],[7.6,2.9],[5.2,4.2],[7.6,4.2]].forEach(p=>addFixture(p[0],p[1],'spot',{int:4}));
-
-// --- Coin salon : plafonnier grappe + lampadaire + 2 spots ---
-addFixture(6.2,5.8,'plaf',{int:12});
-[[5.4,6.6],[7.4,6.6]].forEach(p=>addFixture(p[0],p[1],'spot'));
-addFixture(7.7,7.6,'point',{y:1.55,int:7}); // lampadaire arc
-
-// ---------- Zone labels (sprites) ----------
-const labelSprites = [];
-function makeLabel(text, sub, x, z){
-  const cv = document.createElement('canvas'); cv.width=256; cv.height=96;
-  const ctx = cv.getContext('2d');
-  ctx.fillStyle='rgba(20,24,32,0.82)'; roundRect(ctx,4,4,248,88,14); ctx.fill();
-  ctx.fillStyle='#ffffff'; ctx.font='bold 30px system-ui'; ctx.textAlign='center';
-  ctx.fillText(text,128,42);
-  if(sub){ ctx.fillStyle='#ffcf6b'; ctx.font='22px system-ui'; ctx.fillText(sub,128,74); }
-  const tex = new THREE.CanvasTexture(cv); tex.anisotropy=4;
-  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map:tex, transparent:true, depthTest:false}));
-  sp.position.set(x, 1.6, z); sp.scale.set(1.5,0.56,1);
-  scene.add(sp); labelSprites.push(sp);
-}
-function roundRect(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y);
-  ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
-  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
-zones.forEach(z=> makeLabel(z.name, z.area, (z.x0+z.x1)/2, (z.z0+z.z1)/2));
-
-// ---------- UI controls ----------
-const $ = id=>document.getElementById(id);
-let intensityFactor = 0.8;
-
-function applyIntensity(){
-  fixtures.forEach(f=>{
-    f.light.intensity = f.baseInt * intensityFactor;
-    f.g.children.forEach(c=>{ if(c.material && c.material.emissive) c.material.emissiveIntensity = 0.4 + 1.2*intensityFactor; });
-    if(f.cone) f.cone.material.opacity = 0.02 + 0.08*intensityFactor;
-  });
-}
-$('intensity').addEventListener('input', e=>{ intensityFactor = e.target.value/100; applyIntensity(); });
-
-$('dayNight').addEventListener('input', e=>{
-  const day = e.target.value/100;           // 1 = plein jour, 0 = nuit
-  ambient.intensity = 0.08 + 0.45*day;
-  sun.intensity = 0.08 + 0.9*day;
-  const bg = new THREE.Color().setHSL(0.6, 0.18, 0.06 + 0.10*day);
-  scene.background = bg;
-});
-
-$('ceiling').addEventListener('change', e=> ceiling.visible = e.target.checked);
-$('cones').addEventListener('change', e=> coneGroup.visible = e.target.checked);
-$('labels').addEventListener('change', e=> labelSprites.forEach(s=> s.visible = e.target.checked));
-$('reset').addEventListener('click', ()=>{ camera.position.copy(HOME); controls.target.set(4.15,0,4.15); });
-
-applyIntensity();
-$('dayNight').dispatchEvent(new Event('input'));
-
-// ---------- Render loop ----------
-addEventListener('resize', ()=>{
-  camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix();
-  renderer.setSize(innerWidth, innerHeight);
-});
-(function loop(){ requestAnimationFrame(loop); controls.update(); renderer.render(scene,camera); })();
-</script>
-</body>
-</html>
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const ROOMS=[{"n": "Coin Bureau", "x0": 0.3, "z0": 0.3, "x1": 3.3, "z1": 3.09, "a": "8,90 m\u00b2", "c": 12047300}, {"n": "Salle d\u00e9tente & jeux", "x0": 0.3, "z0": 3.09, "x1": 3.3, "z1": 8.8, "a": "15,41 m\u00b2", "c": 13222368}, {"n": "Buanderie", "x0": 3.3, "z0": 0.3, "x1": 5.3, "z1": 2.67, "a": "5,07 m\u00b2", "c": 14077109}, {"n": "WC", "x0": 3.3, "z0": 2.67, "x1": 4.4, "z1": 3.94, "a": "", "c": 14077109}, {"n": "Escalier", "x0": 3.3, "z0": 3.94, "x1": 5.3, "z1": 6.9, "a": "", "c": 13415838}, {"n": "Entr\u00e9e", "x0": 3.3, "z0": 6.9, "x1": 5.3, "z1": 8.8, "a": "5,5 m\u00b2", "c": 13029851}, {"n": "Coin Cuisine", "x0": 5.3, "z0": 0.3, "x1": 9.3, "z1": 3.0, "a": "~9 m\u00b2", "c": 14730940}, {"n": "Coin Repas", "x0": 5.3, "z0": 3.0, "x1": 9.3, "z1": 5.1, "a": "7 m\u00b2", "c": 15257253}, {"n": "Salon", "x0": 5.3, "z0": 5.1, "x1": 9.3, "z1": 8.8, "a": "10,3 m\u00b2", "c": 12373728}], FIX=[{"t": "spot", "x": 1.2, "z": 1.22}, {"t": "spot", "x": 1.2, "z": 2.27}, {"t": "spot", "x": 2.4, "z": 1.22}, {"t": "spot", "x": 2.4, "z": 2.27}, {"t": "app", "x": 0.7, "z": 0.7, "h": 1.05, "label": "lampe bureau"}, {"t": "spot", "x": 1.27, "z": 4.32}, {"t": "spot", "x": 1.27, "z": 5.95}, {"t": "spot", "x": 1.27, "z": 7.58}, {"t": "spot", "x": 2.42, "z": 4.32}, {"t": "spot", "x": 2.42, "z": 5.95}, {"t": "spot", "x": 2.42, "z": 7.58}, {"t": "plaf", "x": 1.6, "z": 5.2}, {"t": "app", "x": 0.7, "z": 8.2, "h": 1.55, "label": "lampadaire indirect"}, {"t": "plaf", "x": 4.3, "z": 1.45}, {"t": "plaf", "x": 3.85, "z": 3.3}, {"t": "plaf", "x": 4.3, "z": 7.85}, {"t": "spot", "x": 4.1, "z": 4.3, "int": 0.7}, {"t": "spot", "x": 4.1, "z": 5.0, "int": 0.7}, {"t": "spot", "x": 4.1, "z": 5.699999999999999, "int": 0.7}, {"t": "spot", "x": 4.1, "z": 6.3999999999999995, "int": 0.7}, {"t": "spot", "x": 6.25, "z": 1.2}, {"t": "spot", "x": 6.25, "z": 2.2}, {"t": "spot", "x": 7.35, "z": 1.2}, {"t": "spot", "x": 7.35, "z": 2.2}, {"t": "spot", "x": 8.45, "z": 1.2}, {"t": "spot", "x": 8.45, "z": 2.2}, {"t": "susp", "x": 6.6, "z": 1.6, "drop": 0.95}, {"t": "susp", "x": 7.5, "z": 1.6, "drop": 0.95}, {"t": "app", "x": 8.6, "z": 0.55, "h": 2.0, "label": "r\u00e9glette sous meuble"}, {"t": "susp", "x": 7.2, "z": 4.05, "drop": 0.8}, {"t": "susp", "x": 7.5, "z": 4.2, "drop": 0.65}, {"t": "susp", "x": 7.35, "z": 3.85, "drop": 0.95}, {"t": "spot", "x": 6.53, "z": 3.67, "int": 0.6}, {"t": "spot", "x": 6.53, "z": 4.42, "int": 0.6}, {"t": "spot", "x": 8.18, "z": 3.67, "int": 0.6}, {"t": "spot", "x": 8.18, "z": 4.42, "int": 0.6}, {"t": "plaf", "x": 7.0, "z": 6.4}, {"t": "spot", "x": 6.53, "z": 6.3}, {"t": "spot", "x": 6.53, "z": 7.7}, {"t": "spot", "x": 8.18, "z": 6.3}, {"t": "spot", "x": 8.18, "z": 7.7}, {"t": "app", "x": 9.0, "z": 8.3, "h": 1.6, "label": "lampadaire arc"}];
+const W=9.6,D=9.1,H=2.6,WALL=0.3;
+const COL={spot:0xffd27a,susp:0xff9d5c,plaf:0x9ad0ff,app:0x7CFFB2};
+const app=document.getElementById('app');
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x11141a);
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;app.appendChild(renderer.domElement);
+const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,0.1,200);
+const HOME=new THREE.Vector3(12,12.5,13);camera.position.copy(HOME);
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
+controls.target.set(W/2,0,D/2);controls.maxPolarAngle=Math.PI/2.05;
+const ambient=new THREE.AmbientLight(0xffffff,.35);scene.add(ambient);
+const sun=new THREE.DirectionalLight(0xfff2dd,.7);sun.position.set(10,15,7);sun.castShadow=true;
+sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-13,right:13,top:13,bottom:-13});scene.add(sun);
+const floor=new THREE.Mesh(new THREE.BoxGeometry(W,.12,D),new THREE.MeshStandardMaterial({color:0xd9cdbd,roughness:.95}));
+floor.position.set(W/2,-.06,D/2);floor.receiveShadow=true;scene.add(floor);
+const ceiling=new THREE.Mesh(new THREE.PlaneGeometry(W,D),new THREE.MeshStandardMaterial({color:0xf3f1ee,side:THREE.DoubleSide}));
+ceiling.rotation.x=Math.PI/2;ceiling.position.set(W/2,H,D/2);ceiling.visible=false;scene.add(ceiling);
+const wm=new THREE.MeshStandardMaterial({color:0xe7e2da,roughness:1});
+function wall(x,z,w,d,h){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),wm);m.position.set(x,h/2,z);m.castShadow=m.receiveShadow=true;scene.add(m);}
+wall(W/2,0,W,WALL,H);wall(W/2,D,W,WALL,H);wall(0,D/2,WALL,D,H);wall(W,D/2,WALL,D,H);
+wall(3.3,D/2,.1,D,H);wall(5.3,D/2,.1,D,H);wall(1.8,3.09,3.0,.1,H);
+ROOMS.forEach(z=>{const w=z.x1-z.x0,d=z.z1-z.z0;
+ const pad=new THREE.Mesh(new THREE.PlaneGeometry(w-.06,d-.06),new THREE.MeshStandardMaterial({color:z.c,transparent:true,opacity:.55}));
+ pad.rotation.x=-Math.PI/2;pad.position.set((z.x0+z.x1)/2,.011,(z.z0+z.z1)/2);pad.receiveShadow=true;scene.add(pad);});
+for(let i=0;i<10;i++){const s=new THREE.Mesh(new THREE.BoxGeometry(1.3,.16,.27),new THREE.MeshStandardMaterial({color:0xb59a82}));
+ s.position.set(4.3,.08+i*.16,4.3+i*.27);s.castShadow=s.receiveShadow=true;scene.add(s);}
+const fixtures=[],coneGroup=new THREE.Group();scene.add(coneGroup);
+function addFix(f){const type=f.t,color=COL[type];let y=H-.02,geo;
+ if(type==='spot')geo=new THREE.CylinderGeometry(.07,.07,.04,20);
+ else if(type==='susp')geo=new THREE.ConeGeometry(.13,.22,24);
+ else if(type==='plaf')geo=new THREE.CylinderGeometry(.2,.2,.05,28);
+ else geo=new THREE.SphereGeometry(.1,18,18);
+ const g=new THREE.Group();
+ if(type==='susp'){const drop=f.drop||.8;y=H-drop;const cord=new THREE.Mesh(new THREE.CylinderGeometry(.006,.006,drop,6),new THREE.MeshStandardMaterial({color:0x222}));cord.position.y=drop/2;g.add(cord);}
+ if(type==='app')y=f.h||1.4;
+ g.position.set(f.x,y,f.z);
+ const body=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color,emissive:color,emissiveIntensity:1.4,roughness:.4}));g.add(body);scene.add(g);
+ const baseInt=f.int!=null?f.int*8:(type==='spot'?6:type==='susp'?10:type==='plaf'?13:8);
+ let light;if(type==='spot'||type==='susp'){light=new THREE.SpotLight(0xffe6c0,baseInt,9,type==='spot'?.85:.95,.5,1.6);
+  const tgt=new THREE.Object3D();tgt.position.set(f.x,0,f.z);scene.add(tgt);light.position.copy(g.position);light.target=tgt;}
+ else{light=new THREE.PointLight(0xffe9cf,baseInt,10,1.8);light.position.copy(g.position);}scene.add(light);
+ let cone=null;if(type==='spot'||type==='susp'){const h=g.position.y,r=h*Math.tan(type==='spot'?.7:.85);
+  cone=new THREE.Mesh(new THREE.ConeGeometry(r,h,24,1,true),new THREE.MeshBasicMaterial({color:0xffe6b0,transparent:true,opacity:.07,side:THREE.DoubleSide,depthWrite:false}));
+  cone.position.set(f.x,h/2,f.z);coneGroup.add(cone);}
+ fixtures.push({g,light,cone,baseInt});}
+FIX.forEach(addFix);
+const labelSprites=[];
+function roundRect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+function label(text,sub,x,z){const cv=document.createElement('canvas');cv.width=256;cv.height=96;const c=cv.getContext('2d');
+ c.fillStyle='rgba(20,24,32,.82)';roundRect(c,4,4,248,88,14);c.fill();c.fillStyle='#fff';c.font='bold 26px system-ui';c.textAlign='center';c.fillText(text,128,40);
+ if(sub){c.fillStyle='#ffcf6b';c.font='22px system-ui';c.fillText(sub,128,72);}
+ const tex=new THREE.CanvasTexture(cv);const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false}));
+ sp.position.set(x,1.7,z);sp.scale.set(1.5,.56,1);scene.add(sp);labelSprites.push(sp);}
+ROOMS.forEach(z=>label(z.n,z.a,(z.x0+z.x1)/2,(z.z0+z.z1)/2));
+const $=id=>document.getElementById(id);let iF=.8;
+function applyI(){fixtures.forEach(f=>{f.light.intensity=f.baseInt*iF;f.g.children.forEach(c=>{if(c.material&&c.material.emissive)c.material.emissiveIntensity=.4+1.2*iF;});if(f.cone)f.cone.material.opacity=.02+.08*iF;});}
+$('intensity').oninput=e=>{iF=e.target.value/100;applyI();};
+$('dayNight').oninput=e=>{const d=e.target.value/100;ambient.intensity=.08+.45*d;sun.intensity=.08+.9*d;scene.background=new THREE.Color().setHSL(.6,.18,.06+.1*d);};
+$('ceiling').onchange=e=>ceiling.visible=e.target.checked;
+$('cones').onchange=e=>coneGroup.visible=e.target.checked;
+$('labels').onchange=e=>labelSprites.forEach(s=>s.visible=e.target.checked);
+$('reset').onclick=()=>{camera.position.copy(HOME);controls.target.set(W/2,0,D/2);};
+applyI();$('dayNight').dispatchEvent(new Event('input'));
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+(function loop(){requestAnimationFrame(loop);controls.update();renderer.render(scene,camera);})();
+</script></body></html>

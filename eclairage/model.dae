@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+ <asset><unit name="meter" meter="1"/><up_axis>Y_UP</up_axis></asset>
+ <library_effects>
+   <effect id="Cloison-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.800 0.780 0.740 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="L_app-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.300 0.850 0.550 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="L_cord-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.150 0.150 0.150 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="L_plaf-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.550 0.780 1.000 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="L_spot-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>1.000 0.820 0.300 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="L_susp-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>1.000 0.490 0.200 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Marche-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.710 0.600 0.510 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Mur-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.900 0.880 0.840 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Sol-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.850 0.800 0.740 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Z_Buanderie-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.840 0.800 0.710 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Z_Coin_Bureau-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.720 0.830 0.770 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Z_Coin_Cuisine-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.880 0.780 0.740 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Z_Coin_Repas-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.910 0.810 0.650 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Z_Entrée-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.780 0.820 0.860 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Z_Escalier-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.800 0.710 0.620 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Z_Salle_détente_jeux-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.790 0.760 0.880 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Z_Salon-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.740 0.810 0.880 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+   <effect id="Z_WC-fx"><profile_COMMON><technique sid="t"><lambert>
+      <diffuse><color>0.840 0.800 0.710 1</color></diffuse></lambert></technique></profile_COMMON></effect>
+ </library_effects>
+ <library_materials>
+   <material id="Cloison-mat" name="Cloison"><instance_effect url="#Cloison-fx"/></material>
+   <material id="L_app-mat" name="L_app"><instance_effect url="#L_app-fx"/></material>
+   <material id="L_cord-mat" name="L_cord"><instance_effect url="#L_cord-fx"/></material>
+   <material id="L_plaf-mat" name="L_plaf"><instance_effect url="#L_plaf-fx"/></material>
+   <material id="L_spot-mat" name="L_spot"><instance_effect url="#L_spot-fx"/></material>
+   <material id="L_susp-mat" name="L_susp"><instance_effect url="#L_susp-fx"/></material>
+   <material id="Marche-mat" name="Marche"><instance_effect url="#Marche-fx"/></material>
+   <material id="Mur-mat" name="Mur"><instance_effect url="#Mur-fx"/></material>
+   <material id="Sol-mat" name="Sol"><instance_effect url="#Sol-fx"/></material>
+   <material id="Z_Buanderie-mat" name="Z_Buanderie"><instance_effect url="#Z_Buanderie-fx"/></material>
+   <material id="Z_Coin_Bureau-mat" name="Z_Coin_Bureau"><instance_effect url="#Z_Coin_Bureau-fx"/></material>
+   <material id="Z_Coin_Cuisine-mat" name="Z_Coin_Cuisine"><instance_effect url="#Z_Coin_Cuisine-fx"/></material>
+   <material id="Z_Coin_Repas-mat" name="Z_Coin_Repas"><instance_effect url="#Z_Coin_Repas-fx"/></material>
+   <material id="Z_Entrée-mat" name="Z_Entrée"><instance_effect url="#Z_Entrée-fx"/></material>
+   <material id="Z_Escalier-mat" name="Z_Escalier"><instance_effect url="#Z_Escalier-fx"/></material>
+   <material id="Z_Salle_détente_jeux-mat" name="Z_Salle_détente_jeux"><instance_effect url="#Z_Salle_détente_jeux-fx"/></material>
+   <material id="Z_Salon-mat" name="Z_Salon"><instance_effect url="#Z_Salon-fx"/></material>
+   <material id="Z_WC-mat" name="Z_WC"><instance_effect url="#Z_WC-fx"/></material>
+ </library_materials>
+ <library_geometries>
+   <geometry id="g0" name="Sol"><mesh>
+     <source id="g0-p"><float_array id="g0-pa" count="24">0.0000 -0.1200 -9.1000 9.6000 -0.1200 -9.1000 9.6000 0.0000 -9.1000 0.0000 0.0000 -9.1000 0.0000 -0.1200 0.0000 9.6000 -0.1200 0.0000 9.6000 0.0000 0.0000 0.0000 0.0000 0.0000</float_array>
+       <technique_common><accessor source="#g0-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g0-v"><input semantic="POSITION" source="#g0-p"/></vertices>
+     <triangles count="12" material="Sol-mat">
+       <input semantic="VERTEX" source="#g0-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g1" name="Mur_N"><mesh>
+     <source id="g1-p"><float_array id="g1-pa" count="24">0.0000 0.0000 -0.1500 9.6000 0.0000 -0.1500 9.6000 2.6000 -0.1500 0.0000 2.6000 -0.1500 0.0000 0.0000 0.1500 9.6000 0.0000 0.1500 9.6000 2.6000 0.1500 0.0000 2.6000 0.1500</float_array>
+       <technique_common><accessor source="#g1-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g1-v"><input semantic="POSITION" source="#g1-p"/></vertices>
+     <triangles count="12" material="Mur-mat">
+       <input semantic="VERTEX" source="#g1-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g2" name="Mur_S"><mesh>
+     <source id="g2-p"><float_array id="g2-pa" count="24">0.0000 0.0000 -9.2500 9.6000 0.0000 -9.2500 9.6000 2.6000 -9.2500 0.0000 2.6000 -9.2500 0.0000 0.0000 -8.9500 9.6000 0.0000 -8.9500 9.6000 2.6000 -8.9500 0.0000 2.6000 -8.9500</float_array>
+       <technique_common><accessor source="#g2-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g2-v"><input semantic="POSITION" source="#g2-p"/></vertices>
+     <triangles count="12" material="Mur-mat">
+       <input semantic="VERTEX" source="#g2-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g3" name="Mur_O"><mesh>
+     <source id="g3-p"><float_array id="g3-pa" count="24">-0.1500 0.0000 -9.1000 0.1500 0.0000 -9.1000 0.1500 2.6000 -9.1000 -0.1500 2.6000 -9.1000 -0.1500 0.0000 0.0000 0.1500 0.0000 0.0000 0.1500 2.6000 0.0000 -0.1500 2.6000 0.0000</float_array>
+       <technique_common><accessor source="#g3-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g3-v"><input semantic="POSITION" source="#g3-p"/></vertices>
+     <triangles count="12" material="Mur-mat">
+       <input semantic="VERTEX" source="#g3-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g4" name="Mur_E"><mesh>
+     <source id="g4-p"><float_array id="g4-pa" count="24">9.4500 0.0000 -9.1000 9.7500 0.0000 -9.1000 9.7500 2.6000 -9.1000 9.4500 2.6000 -9.1000 9.4500 0.0000 0.0000 9.7500 0.0000 0.0000 9.7500 2.6000 0.0000 9.4500 2.6000 0.0000</float_array>
+       <technique_common><accessor source="#g4-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g4-v"><input semantic="POSITION" source="#g4-p"/></vertices>
+     <triangles count="12" material="Mur-mat">
+       <input semantic="VERTEX" source="#g4-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g5" name="Cloison_O_centre"><mesh>
+     <source id="g5-p"><float_array id="g5-pa" count="24">3.2500 0.0000 -9.1000 3.3500 0.0000 -9.1000 3.3500 2.6000 -9.1000 3.2500 2.6000 -9.1000 3.2500 0.0000 0.0000 3.3500 0.0000 0.0000 3.3500 2.6000 0.0000 3.2500 2.6000 0.0000</float_array>
+       <technique_common><accessor source="#g5-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g5-v"><input semantic="POSITION" source="#g5-p"/></vertices>
+     <triangles count="12" material="Cloison-mat">
+       <input semantic="VERTEX" source="#g5-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g6" name="Cloison_E_centre"><mesh>
+     <source id="g6-p"><float_array id="g6-pa" count="24">5.2500 0.0000 -9.1000 5.3500 0.0000 -9.1000 5.3500 2.6000 -9.1000 5.2500 2.6000 -9.1000 5.2500 0.0000 0.0000 5.3500 0.0000 0.0000 5.3500 2.6000 0.0000 5.2500 2.6000 0.0000</float_array>
+       <technique_common><accessor source="#g6-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g6-v"><input semantic="POSITION" source="#g6-p"/></vertices>
+     <triangles count="12" material="Cloison-mat">
+       <input semantic="VERTEX" source="#g6-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g7" name="Cloison_bureau"><mesh>
+     <source id="g7-p"><float_array id="g7-pa" count="24">0.3000 0.0000 -3.1400 3.3000 0.0000 -3.1400 3.3000 2.6000 -3.1400 0.3000 2.6000 -3.1400 0.3000 0.0000 -3.0400 3.3000 0.0000 -3.0400 3.3000 2.6000 -3.0400 0.3000 2.6000 -3.0400</float_array>
+       <technique_common><accessor source="#g7-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g7-v"><input semantic="POSITION" source="#g7-p"/></vertices>
+     <triangles count="12" material="Cloison-mat">
+       <input semantic="VERTEX" source="#g7-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g8" name="Zone_Coin_Bureau"><mesh>
+     <source id="g8-p"><float_array id="g8-pa" count="24">0.3250 0.0020 -3.0650 3.2750 0.0020 -3.0650 3.2750 0.0220 -3.0650 0.3250 0.0220 -3.0650 0.3250 0.0020 -0.3250 3.2750 0.0020 -0.3250 3.2750 0.0220 -0.3250 0.3250 0.0220 -0.3250</float_array>
+       <technique_common><accessor source="#g8-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g8-v"><input semantic="POSITION" source="#g8-p"/></vertices>
+     <triangles count="12" material="Z_Coin_Bureau-mat">
+       <input semantic="VERTEX" source="#g8-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g9" name="Zone_Salle_détente_jeux"><mesh>
+     <source id="g9-p"><float_array id="g9-pa" count="24">0.3250 0.0020 -8.7750 3.2750 0.0020 -8.7750 3.2750 0.0220 -8.7750 0.3250 0.0220 -8.7750 0.3250 0.0020 -3.1150 3.2750 0.0020 -3.1150 3.2750 0.0220 -3.1150 0.3250 0.0220 -3.1150</float_array>
+       <technique_common><accessor source="#g9-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g9-v"><input semantic="POSITION" source="#g9-p"/></vertices>
+     <triangles count="12" material="Z_Salle_détente_jeux-mat">
+       <input semantic="VERTEX" source="#g9-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g10" name="Zone_Buanderie"><mesh>
+     <source id="g10-p"><float_array id="g10-pa" count="24">3.3250 0.0020 -2.6450 5.2750 0.0020 -2.6450 5.2750 0.0220 -2.6450 3.3250 0.0220 -2.6450 3.3250 0.0020 -0.3250 5.2750 0.0020 -0.3250 5.2750 0.0220 -0.3250 3.3250 0.0220 -0.3250</float_array>
+       <technique_common><accessor source="#g10-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g10-v"><input semantic="POSITION" source="#g10-p"/></vertices>
+     <triangles count="12" material="Z_Buanderie-mat">
+       <input semantic="VERTEX" source="#g10-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g11" name="Zone_WC"><mesh>
+     <source id="g11-p"><float_array id="g11-pa" count="24">3.3250 0.0020 -3.9150 4.3750 0.0020 -3.9150 4.3750 0.0220 -3.9150 3.3250 0.0220 -3.9150 3.3250 0.0020 -2.6950 4.3750 0.0020 -2.6950 4.3750 0.0220 -2.6950 3.3250 0.0220 -2.6950</float_array>
+       <technique_common><accessor source="#g11-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g11-v"><input semantic="POSITION" source="#g11-p"/></vertices>
+     <triangles count="12" material="Z_WC-mat">
+       <input semantic="VERTEX" source="#g11-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g12" name="Zone_Escalier"><mesh>
+     <source id="g12-p"><float_array id="g12-pa" count="24">3.3250 0.0020 -6.8750 5.2750 0.0020 -6.8750 5.2750 0.0220 -6.8750 3.3250 0.0220 -6.8750 3.3250 0.0020 -3.9650 5.2750 0.0020 -3.9650 5.2750 0.0220 -3.9650 3.3250 0.0220 -3.9650</float_array>
+       <technique_common><accessor source="#g12-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g12-v"><input semantic="POSITION" source="#g12-p"/></vertices>
+     <triangles count="12" material="Z_Escalier-mat">
+       <input semantic="VERTEX" source="#g12-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g13" name="Zone_Entrée"><mesh>
+     <source id="g13-p"><float_array id="g13-pa" count="24">3.3250 0.0020 -8.7750 5.2750 0.0020 -8.7750 5.2750 0.0220 -8.7750 3.3250 0.0220 -8.7750 3.3250 0.0020 -6.9250 5.2750 0.0020 -6.9250 5.2750 0.0220 -6.9250 3.3250 0.0220 -6.9250</float_array>
+       <technique_common><accessor source="#g13-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g13-v"><input semantic="POSITION" source="#g13-p"/></vertices>
+     <triangles count="12" material="Z_Entrée-mat">
+       <input semantic="VERTEX" source="#g13-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g14" name="Zone_Coin_Cuisine"><mesh>
+     <source id="g14-p"><float_array id="g14-pa" count="24">5.3250 0.0020 -2.9750 9.2750 0.0020 -2.9750 9.2750 0.0220 -2.9750 5.3250 0.0220 -2.9750 5.3250 0.0020 -0.3250 9.2750 0.0020 -0.3250 9.2750 0.0220 -0.3250 5.3250 0.0220 -0.3250</float_array>
+       <technique_common><accessor source="#g14-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g14-v"><input semantic="POSITION" source="#g14-p"/></vertices>
+     <triangles count="12" material="Z_Coin_Cuisine-mat">
+       <input semantic="VERTEX" source="#g14-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g15" name="Zone_Coin_Repas"><mesh>
+     <source id="g15-p"><float_array id="g15-pa" count="24">5.3250 0.0020 -5.0750 9.2750 0.0020 -5.0750 9.2750 0.0220 -5.0750 5.3250 0.0220 -5.0750 5.3250 0.0020 -3.0250 9.2750 0.0020 -3.0250 9.2750 0.0220 -3.0250 5.3250 0.0220 -3.0250</float_array>
+       <technique_common><accessor source="#g15-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g15-v"><input semantic="POSITION" source="#g15-p"/></vertices>
+     <triangles count="12" material="Z_Coin_Repas-mat">
+       <input semantic="VERTEX" source="#g15-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g16" name="Zone_Salon"><mesh>
+     <source id="g16-p"><float_array id="g16-pa" count="24">5.3250 0.0020 -8.7750 9.2750 0.0020 -8.7750 9.2750 0.0220 -8.7750 5.3250 0.0220 -8.7750 5.3250 0.0020 -5.1250 9.2750 0.0020 -5.1250 9.2750 0.0220 -5.1250 5.3250 0.0220 -5.1250</float_array>
+       <technique_common><accessor source="#g16-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g16-v"><input semantic="POSITION" source="#g16-p"/></vertices>
+     <triangles count="12" material="Z_Salon-mat">
+       <input semantic="VERTEX" source="#g16-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g17" name="Marche_0"><mesh>
+     <source id="g17-p"><float_array id="g17-pa" count="24">3.6500 0.0000 -4.4350 4.9500 0.0000 -4.4350 4.9500 0.1600 -4.4350 3.6500 0.1600 -4.4350 3.6500 0.0000 -4.1650 4.9500 0.0000 -4.1650 4.9500 0.1600 -4.1650 3.6500 0.1600 -4.1650</float_array>
+       <technique_common><accessor source="#g17-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g17-v"><input semantic="POSITION" source="#g17-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g17-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g18" name="Marche_1"><mesh>
+     <source id="g18-p"><float_array id="g18-pa" count="24">3.6500 0.1600 -4.7050 4.9500 0.1600 -4.7050 4.9500 0.3200 -4.7050 3.6500 0.3200 -4.7050 3.6500 0.1600 -4.4350 4.9500 0.1600 -4.4350 4.9500 0.3200 -4.4350 3.6500 0.3200 -4.4350</float_array>
+       <technique_common><accessor source="#g18-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g18-v"><input semantic="POSITION" source="#g18-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g18-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g19" name="Marche_2"><mesh>
+     <source id="g19-p"><float_array id="g19-pa" count="24">3.6500 0.3200 -4.9750 4.9500 0.3200 -4.9750 4.9500 0.4800 -4.9750 3.6500 0.4800 -4.9750 3.6500 0.3200 -4.7050 4.9500 0.3200 -4.7050 4.9500 0.4800 -4.7050 3.6500 0.4800 -4.7050</float_array>
+       <technique_common><accessor source="#g19-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g19-v"><input semantic="POSITION" source="#g19-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g19-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g20" name="Marche_3"><mesh>
+     <source id="g20-p"><float_array id="g20-pa" count="24">3.6500 0.4800 -5.2450 4.9500 0.4800 -5.2450 4.9500 0.6400 -5.2450 3.6500 0.6400 -5.2450 3.6500 0.4800 -4.9750 4.9500 0.4800 -4.9750 4.9500 0.6400 -4.9750 3.6500 0.6400 -4.9750</float_array>
+       <technique_common><accessor source="#g20-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g20-v"><input semantic="POSITION" source="#g20-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g20-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g21" name="Marche_4"><mesh>
+     <source id="g21-p"><float_array id="g21-pa" count="24">3.6500 0.6400 -5.5150 4.9500 0.6400 -5.5150 4.9500 0.8000 -5.5150 3.6500 0.8000 -5.5150 3.6500 0.6400 -5.2450 4.9500 0.6400 -5.2450 4.9500 0.8000 -5.2450 3.6500 0.8000 -5.2450</float_array>
+       <technique_common><accessor source="#g21-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g21-v"><input semantic="POSITION" source="#g21-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g21-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g22" name="Marche_5"><mesh>
+     <source id="g22-p"><float_array id="g22-pa" count="24">3.6500 0.8000 -5.7850 4.9500 0.8000 -5.7850 4.9500 0.9600 -5.7850 3.6500 0.9600 -5.7850 3.6500 0.8000 -5.5150 4.9500 0.8000 -5.5150 4.9500 0.9600 -5.5150 3.6500 0.9600 -5.5150</float_array>
+       <technique_common><accessor source="#g22-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g22-v"><input semantic="POSITION" source="#g22-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g22-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g23" name="Marche_6"><mesh>
+     <source id="g23-p"><float_array id="g23-pa" count="24">3.6500 0.9600 -6.0550 4.9500 0.9600 -6.0550 4.9500 1.1200 -6.0550 3.6500 1.1200 -6.0550 3.6500 0.9600 -5.7850 4.9500 0.9600 -5.7850 4.9500 1.1200 -5.7850 3.6500 1.1200 -5.7850</float_array>
+       <technique_common><accessor source="#g23-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g23-v"><input semantic="POSITION" source="#g23-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g23-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g24" name="Marche_7"><mesh>
+     <source id="g24-p"><float_array id="g24-pa" count="24">3.6500 1.1200 -6.3250 4.9500 1.1200 -6.3250 4.9500 1.2800 -6.3250 3.6500 1.2800 -6.3250 3.6500 1.1200 -6.0550 4.9500 1.1200 -6.0550 4.9500 1.2800 -6.0550 3.6500 1.2800 -6.0550</float_array>
+       <technique_common><accessor source="#g24-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g24-v"><input semantic="POSITION" source="#g24-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g24-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g25" name="Marche_8"><mesh>
+     <source id="g25-p"><float_array id="g25-pa" count="24">3.6500 1.2800 -6.5950 4.9500 1.2800 -6.5950 4.9500 1.4400 -6.5950 3.6500 1.4400 -6.5950 3.6500 1.2800 -6.3250 4.9500 1.2800 -6.3250 4.9500 1.4400 -6.3250 3.6500 1.4400 -6.3250</float_array>
+       <technique_common><accessor source="#g25-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g25-v"><input semantic="POSITION" source="#g25-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g25-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g26" name="Marche_9"><mesh>
+     <source id="g26-p"><float_array id="g26-pa" count="24">3.6500 1.4400 -6.8650 4.9500 1.4400 -6.8650 4.9500 1.6000 -6.8650 3.6500 1.6000 -6.8650 3.6500 1.4400 -6.5950 4.9500 1.4400 -6.5950 4.9500 1.6000 -6.5950 3.6500 1.6000 -6.5950</float_array>
+       <technique_common><accessor source="#g26-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g26-v"><input semantic="POSITION" source="#g26-p"/></vertices>
+     <triangles count="12" material="Marche-mat">
+       <input semantic="VERTEX" source="#g26-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g27" name="Spot_0"><mesh>
+     <source id="g27-p"><float_array id="g27-pa" count="24">1.1400 2.5500 -1.2800 1.2600 2.5500 -1.2800 1.2600 2.5900 -1.2800 1.1400 2.5900 -1.2800 1.1400 2.5500 -1.1600 1.2600 2.5500 -1.1600 1.2600 2.5900 -1.1600 1.1400 2.5900 -1.1600</float_array>
+       <technique_common><accessor source="#g27-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g27-v"><input semantic="POSITION" source="#g27-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g27-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g28" name="Spot_1"><mesh>
+     <source id="g28-p"><float_array id="g28-pa" count="24">1.1400 2.5500 -2.3300 1.2600 2.5500 -2.3300 1.2600 2.5900 -2.3300 1.1400 2.5900 -2.3300 1.1400 2.5500 -2.2100 1.2600 2.5500 -2.2100 1.2600 2.5900 -2.2100 1.1400 2.5900 -2.2100</float_array>
+       <technique_common><accessor source="#g28-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g28-v"><input semantic="POSITION" source="#g28-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g28-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g29" name="Spot_2"><mesh>
+     <source id="g29-p"><float_array id="g29-pa" count="24">2.3400 2.5500 -1.2800 2.4600 2.5500 -1.2800 2.4600 2.5900 -1.2800 2.3400 2.5900 -1.2800 2.3400 2.5500 -1.1600 2.4600 2.5500 -1.1600 2.4600 2.5900 -1.1600 2.3400 2.5900 -1.1600</float_array>
+       <technique_common><accessor source="#g29-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g29-v"><input semantic="POSITION" source="#g29-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g29-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g30" name="Spot_3"><mesh>
+     <source id="g30-p"><float_array id="g30-pa" count="24">2.3400 2.5500 -2.3300 2.4600 2.5500 -2.3300 2.4600 2.5900 -2.3300 2.3400 2.5900 -2.3300 2.3400 2.5500 -2.2100 2.4600 2.5500 -2.2100 2.4600 2.5900 -2.2100 2.3400 2.5900 -2.2100</float_array>
+       <technique_common><accessor source="#g30-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g30-v"><input semantic="POSITION" source="#g30-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g30-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g31" name="App_4"><mesh>
+     <source id="g31-p"><float_array id="g31-pa" count="24">0.6000 0.9500 -0.8000 0.8000 0.9500 -0.8000 0.8000 1.1500 -0.8000 0.6000 1.1500 -0.8000 0.6000 0.9500 -0.6000 0.8000 0.9500 -0.6000 0.8000 1.1500 -0.6000 0.6000 1.1500 -0.6000</float_array>
+       <technique_common><accessor source="#g31-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g31-v"><input semantic="POSITION" source="#g31-p"/></vertices>
+     <triangles count="12" material="L_app-mat">
+       <input semantic="VERTEX" source="#g31-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g32" name="Pied_4"><mesh>
+     <source id="g32-p"><float_array id="g32-pa" count="24">0.6750 0.0000 -0.7250 0.7250 0.0000 -0.7250 0.7250 1.0500 -0.7250 0.6750 1.0500 -0.7250 0.6750 0.0000 -0.6750 0.7250 0.0000 -0.6750 0.7250 1.0500 -0.6750 0.6750 1.0500 -0.6750</float_array>
+       <technique_common><accessor source="#g32-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g32-v"><input semantic="POSITION" source="#g32-p"/></vertices>
+     <triangles count="12" material="L_cord-mat">
+       <input semantic="VERTEX" source="#g32-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g33" name="Spot_5"><mesh>
+     <source id="g33-p"><float_array id="g33-pa" count="24">1.2100 2.5500 -4.3800 1.3300 2.5500 -4.3800 1.3300 2.5900 -4.3800 1.2100 2.5900 -4.3800 1.2100 2.5500 -4.2600 1.3300 2.5500 -4.2600 1.3300 2.5900 -4.2600 1.2100 2.5900 -4.2600</float_array>
+       <technique_common><accessor source="#g33-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g33-v"><input semantic="POSITION" source="#g33-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g33-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g34" name="Spot_6"><mesh>
+     <source id="g34-p"><float_array id="g34-pa" count="24">1.2100 2.5500 -6.0100 1.3300 2.5500 -6.0100 1.3300 2.5900 -6.0100 1.2100 2.5900 -6.0100 1.2100 2.5500 -5.8900 1.3300 2.5500 -5.8900 1.3300 2.5900 -5.8900 1.2100 2.5900 -5.8900</float_array>
+       <technique_common><accessor source="#g34-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g34-v"><input semantic="POSITION" source="#g34-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g34-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g35" name="Spot_7"><mesh>
+     <source id="g35-p"><float_array id="g35-pa" count="24">1.2100 2.5500 -7.6400 1.3300 2.5500 -7.6400 1.3300 2.5900 -7.6400 1.2100 2.5900 -7.6400 1.2100 2.5500 -7.5200 1.3300 2.5500 -7.5200 1.3300 2.5900 -7.5200 1.2100 2.5900 -7.5200</float_array>
+       <technique_common><accessor source="#g35-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g35-v"><input semantic="POSITION" source="#g35-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g35-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g36" name="Spot_8"><mesh>
+     <source id="g36-p"><float_array id="g36-pa" count="24">2.3600 2.5500 -4.3800 2.4800 2.5500 -4.3800 2.4800 2.5900 -4.3800 2.3600 2.5900 -4.3800 2.3600 2.5500 -4.2600 2.4800 2.5500 -4.2600 2.4800 2.5900 -4.2600 2.3600 2.5900 -4.2600</float_array>
+       <technique_common><accessor source="#g36-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g36-v"><input semantic="POSITION" source="#g36-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g36-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g37" name="Spot_9"><mesh>
+     <source id="g37-p"><float_array id="g37-pa" count="24">2.3600 2.5500 -6.0100 2.4800 2.5500 -6.0100 2.4800 2.5900 -6.0100 2.3600 2.5900 -6.0100 2.3600 2.5500 -5.8900 2.4800 2.5500 -5.8900 2.4800 2.5900 -5.8900 2.3600 2.5900 -5.8900</float_array>
+       <technique_common><accessor source="#g37-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g37-v"><input semantic="POSITION" source="#g37-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g37-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g38" name="Spot_10"><mesh>
+     <source id="g38-p"><float_array id="g38-pa" count="24">2.3600 2.5500 -7.6400 2.4800 2.5500 -7.6400 2.4800 2.5900 -7.6400 2.3600 2.5900 -7.6400 2.3600 2.5500 -7.5200 2.4800 2.5500 -7.5200 2.4800 2.5900 -7.5200 2.3600 2.5900 -7.5200</float_array>
+       <technique_common><accessor source="#g38-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g38-v"><input semantic="POSITION" source="#g38-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g38-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g39" name="Plaf_11"><mesh>
+     <source id="g39-p"><float_array id="g39-pa" count="24">1.4000 2.5300 -5.4000 1.8000 2.5300 -5.4000 1.8000 2.5900 -5.4000 1.4000 2.5900 -5.4000 1.4000 2.5300 -5.0000 1.8000 2.5300 -5.0000 1.8000 2.5900 -5.0000 1.4000 2.5900 -5.0000</float_array>
+       <technique_common><accessor source="#g39-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g39-v"><input semantic="POSITION" source="#g39-p"/></vertices>
+     <triangles count="12" material="L_plaf-mat">
+       <input semantic="VERTEX" source="#g39-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g40" name="App_12"><mesh>
+     <source id="g40-p"><float_array id="g40-pa" count="24">0.6000 1.4500 -8.3000 0.8000 1.4500 -8.3000 0.8000 1.6500 -8.3000 0.6000 1.6500 -8.3000 0.6000 1.4500 -8.1000 0.8000 1.4500 -8.1000 0.8000 1.6500 -8.1000 0.6000 1.6500 -8.1000</float_array>
+       <technique_common><accessor source="#g40-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g40-v"><input semantic="POSITION" source="#g40-p"/></vertices>
+     <triangles count="12" material="L_app-mat">
+       <input semantic="VERTEX" source="#g40-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g41" name="Pied_12"><mesh>
+     <source id="g41-p"><float_array id="g41-pa" count="24">0.6750 0.0000 -8.2250 0.7250 0.0000 -8.2250 0.7250 1.5500 -8.2250 0.6750 1.5500 -8.2250 0.6750 0.0000 -8.1750 0.7250 0.0000 -8.1750 0.7250 1.5500 -8.1750 0.6750 1.5500 -8.1750</float_array>
+       <technique_common><accessor source="#g41-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g41-v"><input semantic="POSITION" source="#g41-p"/></vertices>
+     <triangles count="12" material="L_cord-mat">
+       <input semantic="VERTEX" source="#g41-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g42" name="Plaf_13"><mesh>
+     <source id="g42-p"><float_array id="g42-pa" count="24">4.1000 2.5300 -1.6500 4.5000 2.5300 -1.6500 4.5000 2.5900 -1.6500 4.1000 2.5900 -1.6500 4.1000 2.5300 -1.2500 4.5000 2.5300 -1.2500 4.5000 2.5900 -1.2500 4.1000 2.5900 -1.2500</float_array>
+       <technique_common><accessor source="#g42-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g42-v"><input semantic="POSITION" source="#g42-p"/></vertices>
+     <triangles count="12" material="L_plaf-mat">
+       <input semantic="VERTEX" source="#g42-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g43" name="Plaf_14"><mesh>
+     <source id="g43-p"><float_array id="g43-pa" count="24">3.6500 2.5300 -3.5000 4.0500 2.5300 -3.5000 4.0500 2.5900 -3.5000 3.6500 2.5900 -3.5000 3.6500 2.5300 -3.1000 4.0500 2.5300 -3.1000 4.0500 2.5900 -3.1000 3.6500 2.5900 -3.1000</float_array>
+       <technique_common><accessor source="#g43-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g43-v"><input semantic="POSITION" source="#g43-p"/></vertices>
+     <triangles count="12" material="L_plaf-mat">
+       <input semantic="VERTEX" source="#g43-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g44" name="Plaf_15"><mesh>
+     <source id="g44-p"><float_array id="g44-pa" count="24">4.1000 2.5300 -8.0500 4.5000 2.5300 -8.0500 4.5000 2.5900 -8.0500 4.1000 2.5900 -8.0500 4.1000 2.5300 -7.6500 4.5000 2.5300 -7.6500 4.5000 2.5900 -7.6500 4.1000 2.5900 -7.6500</float_array>
+       <technique_common><accessor source="#g44-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g44-v"><input semantic="POSITION" source="#g44-p"/></vertices>
+     <triangles count="12" material="L_plaf-mat">
+       <input semantic="VERTEX" source="#g44-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g45" name="Spot_16"><mesh>
+     <source id="g45-p"><float_array id="g45-pa" count="24">4.0400 2.5500 -4.3600 4.1600 2.5500 -4.3600 4.1600 2.5900 -4.3600 4.0400 2.5900 -4.3600 4.0400 2.5500 -4.2400 4.1600 2.5500 -4.2400 4.1600 2.5900 -4.2400 4.0400 2.5900 -4.2400</float_array>
+       <technique_common><accessor source="#g45-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g45-v"><input semantic="POSITION" source="#g45-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g45-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g46" name="Spot_17"><mesh>
+     <source id="g46-p"><float_array id="g46-pa" count="24">4.0400 2.5500 -5.0600 4.1600 2.5500 -5.0600 4.1600 2.5900 -5.0600 4.0400 2.5900 -5.0600 4.0400 2.5500 -4.9400 4.1600 2.5500 -4.9400 4.1600 2.5900 -4.9400 4.0400 2.5900 -4.9400</float_array>
+       <technique_common><accessor source="#g46-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g46-v"><input semantic="POSITION" source="#g46-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g46-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g47" name="Spot_18"><mesh>
+     <source id="g47-p"><float_array id="g47-pa" count="24">4.0400 2.5500 -5.7600 4.1600 2.5500 -5.7600 4.1600 2.5900 -5.7600 4.0400 2.5900 -5.7600 4.0400 2.5500 -5.6400 4.1600 2.5500 -5.6400 4.1600 2.5900 -5.6400 4.0400 2.5900 -5.6400</float_array>
+       <technique_common><accessor source="#g47-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g47-v"><input semantic="POSITION" source="#g47-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g47-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g48" name="Spot_19"><mesh>
+     <source id="g48-p"><float_array id="g48-pa" count="24">4.0400 2.5500 -6.4600 4.1600 2.5500 -6.4600 4.1600 2.5900 -6.4600 4.0400 2.5900 -6.4600 4.0400 2.5500 -6.3400 4.1600 2.5500 -6.3400 4.1600 2.5900 -6.3400 4.0400 2.5900 -6.3400</float_array>
+       <technique_common><accessor source="#g48-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g48-v"><input semantic="POSITION" source="#g48-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g48-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g49" name="Spot_20"><mesh>
+     <source id="g49-p"><float_array id="g49-pa" count="24">6.1900 2.5500 -1.2600 6.3100 2.5500 -1.2600 6.3100 2.5900 -1.2600 6.1900 2.5900 -1.2600 6.1900 2.5500 -1.1400 6.3100 2.5500 -1.1400 6.3100 2.5900 -1.1400 6.1900 2.5900 -1.1400</float_array>
+       <technique_common><accessor source="#g49-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g49-v"><input semantic="POSITION" source="#g49-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g49-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g50" name="Spot_21"><mesh>
+     <source id="g50-p"><float_array id="g50-pa" count="24">6.1900 2.5500 -2.2600 6.3100 2.5500 -2.2600 6.3100 2.5900 -2.2600 6.1900 2.5900 -2.2600 6.1900 2.5500 -2.1400 6.3100 2.5500 -2.1400 6.3100 2.5900 -2.1400 6.1900 2.5900 -2.1400</float_array>
+       <technique_common><accessor source="#g50-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g50-v"><input semantic="POSITION" source="#g50-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g50-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g51" name="Spot_22"><mesh>
+     <source id="g51-p"><float_array id="g51-pa" count="24">7.2900 2.5500 -1.2600 7.4100 2.5500 -1.2600 7.4100 2.5900 -1.2600 7.2900 2.5900 -1.2600 7.2900 2.5500 -1.1400 7.4100 2.5500 -1.1400 7.4100 2.5900 -1.1400 7.2900 2.5900 -1.1400</float_array>
+       <technique_common><accessor source="#g51-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g51-v"><input semantic="POSITION" source="#g51-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g51-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g52" name="Spot_23"><mesh>
+     <source id="g52-p"><float_array id="g52-pa" count="24">7.2900 2.5500 -2.2600 7.4100 2.5500 -2.2600 7.4100 2.5900 -2.2600 7.2900 2.5900 -2.2600 7.2900 2.5500 -2.1400 7.4100 2.5500 -2.1400 7.4100 2.5900 -2.1400 7.2900 2.5900 -2.1400</float_array>
+       <technique_common><accessor source="#g52-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g52-v"><input semantic="POSITION" source="#g52-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g52-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g53" name="Spot_24"><mesh>
+     <source id="g53-p"><float_array id="g53-pa" count="24">8.3900 2.5500 -1.2600 8.5100 2.5500 -1.2600 8.5100 2.5900 -1.2600 8.3900 2.5900 -1.2600 8.3900 2.5500 -1.1400 8.5100 2.5500 -1.1400 8.5100 2.5900 -1.1400 8.3900 2.5900 -1.1400</float_array>
+       <technique_common><accessor source="#g53-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g53-v"><input semantic="POSITION" source="#g53-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g53-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g54" name="Spot_25"><mesh>
+     <source id="g54-p"><float_array id="g54-pa" count="24">8.3900 2.5500 -2.2600 8.5100 2.5500 -2.2600 8.5100 2.5900 -2.2600 8.3900 2.5900 -2.2600 8.3900 2.5500 -2.1400 8.5100 2.5500 -2.1400 8.5100 2.5900 -2.1400 8.3900 2.5900 -2.1400</float_array>
+       <technique_common><accessor source="#g54-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g54-v"><input semantic="POSITION" source="#g54-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g54-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g55" name="Susp_26"><mesh>
+     <source id="g55-p"><float_array id="g55-pa" count="24">6.4900 1.5600 -1.7100 6.7100 1.5600 -1.7100 6.7100 1.7400 -1.7100 6.4900 1.7400 -1.7100 6.4900 1.5600 -1.4900 6.7100 1.5600 -1.4900 6.7100 1.7400 -1.4900 6.4900 1.7400 -1.4900</float_array>
+       <technique_common><accessor source="#g55-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g55-v"><input semantic="POSITION" source="#g55-p"/></vertices>
+     <triangles count="12" material="L_susp-mat">
+       <input semantic="VERTEX" source="#g55-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g56" name="Cord_26"><mesh>
+     <source id="g56-p"><float_array id="g56-pa" count="24">6.5900 1.6500 -1.6100 6.6100 1.6500 -1.6100 6.6100 2.6000 -1.6100 6.5900 2.6000 -1.6100 6.5900 1.6500 -1.5900 6.6100 1.6500 -1.5900 6.6100 2.6000 -1.5900 6.5900 2.6000 -1.5900</float_array>
+       <technique_common><accessor source="#g56-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g56-v"><input semantic="POSITION" source="#g56-p"/></vertices>
+     <triangles count="12" material="L_cord-mat">
+       <input semantic="VERTEX" source="#g56-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g57" name="Susp_27"><mesh>
+     <source id="g57-p"><float_array id="g57-pa" count="24">7.3900 1.5600 -1.7100 7.6100 1.5600 -1.7100 7.6100 1.7400 -1.7100 7.3900 1.7400 -1.7100 7.3900 1.5600 -1.4900 7.6100 1.5600 -1.4900 7.6100 1.7400 -1.4900 7.3900 1.7400 -1.4900</float_array>
+       <technique_common><accessor source="#g57-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g57-v"><input semantic="POSITION" source="#g57-p"/></vertices>
+     <triangles count="12" material="L_susp-mat">
+       <input semantic="VERTEX" source="#g57-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g58" name="Cord_27"><mesh>
+     <source id="g58-p"><float_array id="g58-pa" count="24">7.4900 1.6500 -1.6100 7.5100 1.6500 -1.6100 7.5100 2.6000 -1.6100 7.4900 2.6000 -1.6100 7.4900 1.6500 -1.5900 7.5100 1.6500 -1.5900 7.5100 2.6000 -1.5900 7.4900 2.6000 -1.5900</float_array>
+       <technique_common><accessor source="#g58-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g58-v"><input semantic="POSITION" source="#g58-p"/></vertices>
+     <triangles count="12" material="L_cord-mat">
+       <input semantic="VERTEX" source="#g58-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g59" name="App_28"><mesh>
+     <source id="g59-p"><float_array id="g59-pa" count="24">8.5000 1.9000 -0.6500 8.7000 1.9000 -0.6500 8.7000 2.1000 -0.6500 8.5000 2.1000 -0.6500 8.5000 1.9000 -0.4500 8.7000 1.9000 -0.4500 8.7000 2.1000 -0.4500 8.5000 2.1000 -0.4500</float_array>
+       <technique_common><accessor source="#g59-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g59-v"><input semantic="POSITION" source="#g59-p"/></vertices>
+     <triangles count="12" material="L_app-mat">
+       <input semantic="VERTEX" source="#g59-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g60" name="Pied_28"><mesh>
+     <source id="g60-p"><float_array id="g60-pa" count="24">8.5750 0.0000 -0.5750 8.6250 0.0000 -0.5750 8.6250 2.0000 -0.5750 8.5750 2.0000 -0.5750 8.5750 0.0000 -0.5250 8.6250 0.0000 -0.5250 8.6250 2.0000 -0.5250 8.5750 2.0000 -0.5250</float_array>
+       <technique_common><accessor source="#g60-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g60-v"><input semantic="POSITION" source="#g60-p"/></vertices>
+     <triangles count="12" material="L_cord-mat">
+       <input semantic="VERTEX" source="#g60-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g61" name="Susp_29"><mesh>
+     <source id="g61-p"><float_array id="g61-pa" count="24">7.0900 1.7100 -4.1600 7.3100 1.7100 -4.1600 7.3100 1.8900 -4.1600 7.0900 1.8900 -4.1600 7.0900 1.7100 -3.9400 7.3100 1.7100 -3.9400 7.3100 1.8900 -3.9400 7.0900 1.8900 -3.9400</float_array>
+       <technique_common><accessor source="#g61-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g61-v"><input semantic="POSITION" source="#g61-p"/></vertices>
+     <triangles count="12" material="L_susp-mat">
+       <input semantic="VERTEX" source="#g61-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g62" name="Cord_29"><mesh>
+     <source id="g62-p"><float_array id="g62-pa" count="24">7.1900 1.8000 -4.0600 7.2100 1.8000 -4.0600 7.2100 2.6000 -4.0600 7.1900 2.6000 -4.0600 7.1900 1.8000 -4.0400 7.2100 1.8000 -4.0400 7.2100 2.6000 -4.0400 7.1900 2.6000 -4.0400</float_array>
+       <technique_common><accessor source="#g62-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g62-v"><input semantic="POSITION" source="#g62-p"/></vertices>
+     <triangles count="12" material="L_cord-mat">
+       <input semantic="VERTEX" source="#g62-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g63" name="Susp_30"><mesh>
+     <source id="g63-p"><float_array id="g63-pa" count="24">7.3900 1.8600 -4.3100 7.6100 1.8600 -4.3100 7.6100 2.0400 -4.3100 7.3900 2.0400 -4.3100 7.3900 1.8600 -4.0900 7.6100 1.8600 -4.0900 7.6100 2.0400 -4.0900 7.3900 2.0400 -4.0900</float_array>
+       <technique_common><accessor source="#g63-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g63-v"><input semantic="POSITION" source="#g63-p"/></vertices>
+     <triangles count="12" material="L_susp-mat">
+       <input semantic="VERTEX" source="#g63-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g64" name="Cord_30"><mesh>
+     <source id="g64-p"><float_array id="g64-pa" count="24">7.4900 1.9500 -4.2100 7.5100 1.9500 -4.2100 7.5100 2.6000 -4.2100 7.4900 2.6000 -4.2100 7.4900 1.9500 -4.1900 7.5100 1.9500 -4.1900 7.5100 2.6000 -4.1900 7.4900 2.6000 -4.1900</float_array>
+       <technique_common><accessor source="#g64-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g64-v"><input semantic="POSITION" source="#g64-p"/></vertices>
+     <triangles count="12" material="L_cord-mat">
+       <input semantic="VERTEX" source="#g64-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g65" name="Susp_31"><mesh>
+     <source id="g65-p"><float_array id="g65-pa" count="24">7.2400 1.5600 -3.9600 7.4600 1.5600 -3.9600 7.4600 1.7400 -3.9600 7.2400 1.7400 -3.9600 7.2400 1.5600 -3.7400 7.4600 1.5600 -3.7400 7.4600 1.7400 -3.7400 7.2400 1.7400 -3.7400</float_array>
+       <technique_common><accessor source="#g65-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g65-v"><input semantic="POSITION" source="#g65-p"/></vertices>
+     <triangles count="12" material="L_susp-mat">
+       <input semantic="VERTEX" source="#g65-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g66" name="Cord_31"><mesh>
+     <source id="g66-p"><float_array id="g66-pa" count="24">7.3400 1.6500 -3.8600 7.3600 1.6500 -3.8600 7.3600 2.6000 -3.8600 7.3400 2.6000 -3.8600 7.3400 1.6500 -3.8400 7.3600 1.6500 -3.8400 7.3600 2.6000 -3.8400 7.3400 2.6000 -3.8400</float_array>
+       <technique_common><accessor source="#g66-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g66-v"><input semantic="POSITION" source="#g66-p"/></vertices>
+     <triangles count="12" material="L_cord-mat">
+       <input semantic="VERTEX" source="#g66-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g67" name="Spot_32"><mesh>
+     <source id="g67-p"><float_array id="g67-pa" count="24">6.4700 2.5500 -3.7300 6.5900 2.5500 -3.7300 6.5900 2.5900 -3.7300 6.4700 2.5900 -3.7300 6.4700 2.5500 -3.6100 6.5900 2.5500 -3.6100 6.5900 2.5900 -3.6100 6.4700 2.5900 -3.6100</float_array>
+       <technique_common><accessor source="#g67-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g67-v"><input semantic="POSITION" source="#g67-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g67-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g68" name="Spot_33"><mesh>
+     <source id="g68-p"><float_array id="g68-pa" count="24">6.4700 2.5500 -4.4800 6.5900 2.5500 -4.4800 6.5900 2.5900 -4.4800 6.4700 2.5900 -4.4800 6.4700 2.5500 -4.3600 6.5900 2.5500 -4.3600 6.5900 2.5900 -4.3600 6.4700 2.5900 -4.3600</float_array>
+       <technique_common><accessor source="#g68-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g68-v"><input semantic="POSITION" source="#g68-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g68-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g69" name="Spot_34"><mesh>
+     <source id="g69-p"><float_array id="g69-pa" count="24">8.1200 2.5500 -3.7300 8.2400 2.5500 -3.7300 8.2400 2.5900 -3.7300 8.1200 2.5900 -3.7300 8.1200 2.5500 -3.6100 8.2400 2.5500 -3.6100 8.2400 2.5900 -3.6100 8.1200 2.5900 -3.6100</float_array>
+       <technique_common><accessor source="#g69-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g69-v"><input semantic="POSITION" source="#g69-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g69-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g70" name="Spot_35"><mesh>
+     <source id="g70-p"><float_array id="g70-pa" count="24">8.1200 2.5500 -4.4800 8.2400 2.5500 -4.4800 8.2400 2.5900 -4.4800 8.1200 2.5900 -4.4800 8.1200 2.5500 -4.3600 8.2400 2.5500 -4.3600 8.2400 2.5900 -4.3600 8.1200 2.5900 -4.3600</float_array>
+       <technique_common><accessor source="#g70-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g70-v"><input semantic="POSITION" source="#g70-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g70-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g71" name="Plaf_36"><mesh>
+     <source id="g71-p"><float_array id="g71-pa" count="24">6.8000 2.5300 -6.6000 7.2000 2.5300 -6.6000 7.2000 2.5900 -6.6000 6.8000 2.5900 -6.6000 6.8000 2.5300 -6.2000 7.2000 2.5300 -6.2000 7.2000 2.5900 -6.2000 6.8000 2.5900 -6.2000</float_array>
+       <technique_common><accessor source="#g71-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g71-v"><input semantic="POSITION" source="#g71-p"/></vertices>
+     <triangles count="12" material="L_plaf-mat">
+       <input semantic="VERTEX" source="#g71-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g72" name="Spot_37"><mesh>
+     <source id="g72-p"><float_array id="g72-pa" count="24">6.4700 2.5500 -6.3600 6.5900 2.5500 -6.3600 6.5900 2.5900 -6.3600 6.4700 2.5900 -6.3600 6.4700 2.5500 -6.2400 6.5900 2.5500 -6.2400 6.5900 2.5900 -6.2400 6.4700 2.5900 -6.2400</float_array>
+       <technique_common><accessor source="#g72-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g72-v"><input semantic="POSITION" source="#g72-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g72-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g73" name="Spot_38"><mesh>
+     <source id="g73-p"><float_array id="g73-pa" count="24">6.4700 2.5500 -7.7600 6.5900 2.5500 -7.7600 6.5900 2.5900 -7.7600 6.4700 2.5900 -7.7600 6.4700 2.5500 -7.6400 6.5900 2.5500 -7.6400 6.5900 2.5900 -7.6400 6.4700 2.5900 -7.6400</float_array>
+       <technique_common><accessor source="#g73-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g73-v"><input semantic="POSITION" source="#g73-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g73-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g74" name="Spot_39"><mesh>
+     <source id="g74-p"><float_array id="g74-pa" count="24">8.1200 2.5500 -6.3600 8.2400 2.5500 -6.3600 8.2400 2.5900 -6.3600 8.1200 2.5900 -6.3600 8.1200 2.5500 -6.2400 8.2400 2.5500 -6.2400 8.2400 2.5900 -6.2400 8.1200 2.5900 -6.2400</float_array>
+       <technique_common><accessor source="#g74-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g74-v"><input semantic="POSITION" source="#g74-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g74-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g75" name="Spot_40"><mesh>
+     <source id="g75-p"><float_array id="g75-pa" count="24">8.1200 2.5500 -7.7600 8.2400 2.5500 -7.7600 8.2400 2.5900 -7.7600 8.1200 2.5900 -7.7600 8.1200 2.5500 -7.6400 8.2400 2.5500 -7.6400 8.2400 2.5900 -7.6400 8.1200 2.5900 -7.6400</float_array>
+       <technique_common><accessor source="#g75-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g75-v"><input semantic="POSITION" source="#g75-p"/></vertices>
+     <triangles count="12" material="L_spot-mat">
+       <input semantic="VERTEX" source="#g75-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g76" name="App_41"><mesh>
+     <source id="g76-p"><float_array id="g76-pa" count="24">8.9000 1.5000 -8.4000 9.1000 1.5000 -8.4000 9.1000 1.7000 -8.4000 8.9000 1.7000 -8.4000 8.9000 1.5000 -8.2000 9.1000 1.5000 -8.2000 9.1000 1.7000 -8.2000 8.9000 1.7000 -8.2000</float_array>
+       <technique_common><accessor source="#g76-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g76-v"><input semantic="POSITION" source="#g76-p"/></vertices>
+     <triangles count="12" material="L_app-mat">
+       <input semantic="VERTEX" source="#g76-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+   <geometry id="g77" name="Pied_41"><mesh>
+     <source id="g77-p"><float_array id="g77-pa" count="24">8.9750 0.0000 -8.3250 9.0250 0.0000 -8.3250 9.0250 1.6000 -8.3250 8.9750 1.6000 -8.3250 8.9750 0.0000 -8.2750 9.0250 0.0000 -8.2750 9.0250 1.6000 -8.2750 8.9750 1.6000 -8.2750</float_array>
+       <technique_common><accessor source="#g77-pa" count="8" stride="3">
+         <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+     <vertices id="g77-v"><input semantic="POSITION" source="#g77-p"/></vertices>
+     <triangles count="12" material="L_cord-mat">
+       <input semantic="VERTEX" source="#g77-v" offset="0"/><p>0 1 2 0 2 3 4 6 5 4 7 6 0 4 5 0 5 1 1 5 6 1 6 2 2 6 7 2 7 3 3 7 4 3 4 0</p></triangles></mesh></geometry>
+ </library_geometries>
+ <library_visual_scenes><visual_scene id="scene" name="scene">
+    <node id="n0" name="Sol"><instance_geometry url="#g0">
+       <bind_material><technique_common>
+         <instance_material symbol="Sol-mat" target="#Sol-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n1" name="Mur_N"><instance_geometry url="#g1">
+       <bind_material><technique_common>
+         <instance_material symbol="Mur-mat" target="#Mur-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n2" name="Mur_S"><instance_geometry url="#g2">
+       <bind_material><technique_common>
+         <instance_material symbol="Mur-mat" target="#Mur-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n3" name="Mur_O"><instance_geometry url="#g3">
+       <bind_material><technique_common>
+         <instance_material symbol="Mur-mat" target="#Mur-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n4" name="Mur_E"><instance_geometry url="#g4">
+       <bind_material><technique_common>
+         <instance_material symbol="Mur-mat" target="#Mur-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n5" name="Cloison_O_centre"><instance_geometry url="#g5">
+       <bind_material><technique_common>
+         <instance_material symbol="Cloison-mat" target="#Cloison-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n6" name="Cloison_E_centre"><instance_geometry url="#g6">
+       <bind_material><technique_common>
+         <instance_material symbol="Cloison-mat" target="#Cloison-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n7" name="Cloison_bureau"><instance_geometry url="#g7">
+       <bind_material><technique_common>
+         <instance_material symbol="Cloison-mat" target="#Cloison-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n8" name="Zone_Coin_Bureau"><instance_geometry url="#g8">
+       <bind_material><technique_common>
+         <instance_material symbol="Z_Coin_Bureau-mat" target="#Z_Coin_Bureau-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n9" name="Zone_Salle_détente_jeux"><instance_geometry url="#g9">
+       <bind_material><technique_common>
+         <instance_material symbol="Z_Salle_détente_jeux-mat" target="#Z_Salle_détente_jeux-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n10" name="Zone_Buanderie"><instance_geometry url="#g10">
+       <bind_material><technique_common>
+         <instance_material symbol="Z_Buanderie-mat" target="#Z_Buanderie-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n11" name="Zone_WC"><instance_geometry url="#g11">
+       <bind_material><technique_common>
+         <instance_material symbol="Z_WC-mat" target="#Z_WC-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n12" name="Zone_Escalier"><instance_geometry url="#g12">
+       <bind_material><technique_common>
+         <instance_material symbol="Z_Escalier-mat" target="#Z_Escalier-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n13" name="Zone_Entrée"><instance_geometry url="#g13">
+       <bind_material><technique_common>
+         <instance_material symbol="Z_Entrée-mat" target="#Z_Entrée-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n14" name="Zone_Coin_Cuisine"><instance_geometry url="#g14">
+       <bind_material><technique_common>
+         <instance_material symbol="Z_Coin_Cuisine-mat" target="#Z_Coin_Cuisine-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n15" name="Zone_Coin_Repas"><instance_geometry url="#g15">
+       <bind_material><technique_common>
+         <instance_material symbol="Z_Coin_Repas-mat" target="#Z_Coin_Repas-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n16" name="Zone_Salon"><instance_geometry url="#g16">
+       <bind_material><technique_common>
+         <instance_material symbol="Z_Salon-mat" target="#Z_Salon-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n17" name="Marche_0"><instance_geometry url="#g17">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n18" name="Marche_1"><instance_geometry url="#g18">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n19" name="Marche_2"><instance_geometry url="#g19">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n20" name="Marche_3"><instance_geometry url="#g20">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n21" name="Marche_4"><instance_geometry url="#g21">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n22" name="Marche_5"><instance_geometry url="#g22">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n23" name="Marche_6"><instance_geometry url="#g23">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n24" name="Marche_7"><instance_geometry url="#g24">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n25" name="Marche_8"><instance_geometry url="#g25">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n26" name="Marche_9"><instance_geometry url="#g26">
+       <bind_material><technique_common>
+         <instance_material symbol="Marche-mat" target="#Marche-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n27" name="Spot_0"><instance_geometry url="#g27">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n28" name="Spot_1"><instance_geometry url="#g28">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n29" name="Spot_2"><instance_geometry url="#g29">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n30" name="Spot_3"><instance_geometry url="#g30">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n31" name="App_4"><instance_geometry url="#g31">
+       <bind_material><technique_common>
+         <instance_material symbol="L_app-mat" target="#L_app-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n32" name="Pied_4"><instance_geometry url="#g32">
+       <bind_material><technique_common>
+         <instance_material symbol="L_cord-mat" target="#L_cord-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n33" name="Spot_5"><instance_geometry url="#g33">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n34" name="Spot_6"><instance_geometry url="#g34">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n35" name="Spot_7"><instance_geometry url="#g35">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n36" name="Spot_8"><instance_geometry url="#g36">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n37" name="Spot_9"><instance_geometry url="#g37">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n38" name="Spot_10"><instance_geometry url="#g38">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n39" name="Plaf_11"><instance_geometry url="#g39">
+       <bind_material><technique_common>
+         <instance_material symbol="L_plaf-mat" target="#L_plaf-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n40" name="App_12"><instance_geometry url="#g40">
+       <bind_material><technique_common>
+         <instance_material symbol="L_app-mat" target="#L_app-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n41" name="Pied_12"><instance_geometry url="#g41">
+       <bind_material><technique_common>
+         <instance_material symbol="L_cord-mat" target="#L_cord-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n42" name="Plaf_13"><instance_geometry url="#g42">
+       <bind_material><technique_common>
+         <instance_material symbol="L_plaf-mat" target="#L_plaf-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n43" name="Plaf_14"><instance_geometry url="#g43">
+       <bind_material><technique_common>
+         <instance_material symbol="L_plaf-mat" target="#L_plaf-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n44" name="Plaf_15"><instance_geometry url="#g44">
+       <bind_material><technique_common>
+         <instance_material symbol="L_plaf-mat" target="#L_plaf-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n45" name="Spot_16"><instance_geometry url="#g45">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n46" name="Spot_17"><instance_geometry url="#g46">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n47" name="Spot_18"><instance_geometry url="#g47">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n48" name="Spot_19"><instance_geometry url="#g48">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n49" name="Spot_20"><instance_geometry url="#g49">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n50" name="Spot_21"><instance_geometry url="#g50">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n51" name="Spot_22"><instance_geometry url="#g51">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n52" name="Spot_23"><instance_geometry url="#g52">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n53" name="Spot_24"><instance_geometry url="#g53">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n54" name="Spot_25"><instance_geometry url="#g54">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n55" name="Susp_26"><instance_geometry url="#g55">
+       <bind_material><technique_common>
+         <instance_material symbol="L_susp-mat" target="#L_susp-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n56" name="Cord_26"><instance_geometry url="#g56">
+       <bind_material><technique_common>
+         <instance_material symbol="L_cord-mat" target="#L_cord-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n57" name="Susp_27"><instance_geometry url="#g57">
+       <bind_material><technique_common>
+         <instance_material symbol="L_susp-mat" target="#L_susp-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n58" name="Cord_27"><instance_geometry url="#g58">
+       <bind_material><technique_common>
+         <instance_material symbol="L_cord-mat" target="#L_cord-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n59" name="App_28"><instance_geometry url="#g59">
+       <bind_material><technique_common>
+         <instance_material symbol="L_app-mat" target="#L_app-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n60" name="Pied_28"><instance_geometry url="#g60">
+       <bind_material><technique_common>
+         <instance_material symbol="L_cord-mat" target="#L_cord-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n61" name="Susp_29"><instance_geometry url="#g61">
+       <bind_material><technique_common>
+         <instance_material symbol="L_susp-mat" target="#L_susp-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n62" name="Cord_29"><instance_geometry url="#g62">
+       <bind_material><technique_common>
+         <instance_material symbol="L_cord-mat" target="#L_cord-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n63" name="Susp_30"><instance_geometry url="#g63">
+       <bind_material><technique_common>
+         <instance_material symbol="L_susp-mat" target="#L_susp-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n64" name="Cord_30"><instance_geometry url="#g64">
+       <bind_material><technique_common>
+         <instance_material symbol="L_cord-mat" target="#L_cord-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n65" name="Susp_31"><instance_geometry url="#g65">
+       <bind_material><technique_common>
+         <instance_material symbol="L_susp-mat" target="#L_susp-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n66" name="Cord_31"><instance_geometry url="#g66">
+       <bind_material><technique_common>
+         <instance_material symbol="L_cord-mat" target="#L_cord-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n67" name="Spot_32"><instance_geometry url="#g67">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n68" name="Spot_33"><instance_geometry url="#g68">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n69" name="Spot_34"><instance_geometry url="#g69">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n70" name="Spot_35"><instance_geometry url="#g70">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n71" name="Plaf_36"><instance_geometry url="#g71">
+       <bind_material><technique_common>
+         <instance_material symbol="L_plaf-mat" target="#L_plaf-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n72" name="Spot_37"><instance_geometry url="#g72">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n73" name="Spot_38"><instance_geometry url="#g73">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n74" name="Spot_39"><instance_geometry url="#g74">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n75" name="Spot_40"><instance_geometry url="#g75">
+       <bind_material><technique_common>
+         <instance_material symbol="L_spot-mat" target="#L_spot-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n76" name="App_41"><instance_geometry url="#g76">
+       <bind_material><technique_common>
+         <instance_material symbol="L_app-mat" target="#L_app-mat"/></technique_common></bind_material></instance_geometry></node>
+    <node id="n77" name="Pied_41"><instance_geometry url="#g77">
+       <bind_material><technique_common>
+         <instance_material symbol="L_cord-mat" target="#L_cord-mat"/></technique_common></bind_material></instance_geometry></node>
+ </visual_scene></library_visual_scenes>
+ <scene><instance_visual_scene url="#scene"/></scene>
+</COLLADA>
