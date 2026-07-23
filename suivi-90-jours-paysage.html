@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Programme 90 jours — Tableau de suivi (A3 paysage)</title>
+<style>
+  @page { size: A3 landscape; margin: 10mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page { width: 400mm; margin: 0 auto; }
+
+  /* ---------- En-tête ---------- */
+  header { border-bottom: 1.2mm solid #1a1a1a; padding-bottom: 2.5mm; margin-bottom: 3.5mm; }
+  .titre-ligne { display: flex; justify-content: space-between; align-items: baseline; }
+  h1 { font-size: 24pt; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+  h1 .accent { color: #b45309; }
+  .devise { font-size: 10pt; font-style: italic; color: #555; }
+
+  .infos { display: flex; gap: 8mm; margin-top: 3mm; font-size: 10pt; }
+  .champ { flex: 1; display: flex; align-items: baseline; gap: 2mm; }
+  .champ label { font-weight: 700; white-space: nowrap; }
+  .champ .ligne { flex: 1; border-bottom: 0.4mm solid #888; height: 6mm; }
+
+  .legende { display: flex; gap: 10mm; margin-top: 2.5mm; font-size: 9.5pt; align-items: center; }
+  .legende .item { display: flex; align-items: center; gap: 1.5mm; }
+  .sym { display: inline-flex; align-items: center; justify-content: center;
+         width: 6mm; height: 6mm; border: 0.4mm solid #1a1a1a; border-radius: 1mm;
+         font-size: 10pt; font-weight: 700; }
+  .sym.ok { background: #d1e7d1; }
+  .sym.partiel { background: #fdeacc; }
+  .sym.non { background: #f5d5d5; }
+  .demi { display: inline-block; width: 4.2mm; height: 4.2mm; border-radius: 50%;
+          border: 0.4mm solid #1a1a1a; vertical-align: middle;
+          background: linear-gradient(90deg, #1a1a1a 50%, #fff 50%); }
+  .demi.inv { border-color: #fff; background: linear-gradient(90deg, #fff 50%, #1a1a1a 50%); }
+
+  /* ---------- Grille ---------- */
+  .colonnes { display: flex; gap: 3mm; }
+  .grille { flex: 1; border-collapse: collapse; table-layout: fixed; font-size: 9pt; }
+  .grille th, .grille td { border: 0.3mm solid #999; padding: 0 1.2mm; height: 11.4mm; }
+  .grille thead th {
+    background: #1a1a1a; color: #fff; font-size: 8pt; height: 8mm;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .grille th.jour, .grille td.jour { width: 9mm; text-align: center; font-weight: 700; }
+  .grille th.date, .grille td.date { width: 13mm; }
+  .grille th.statut, .grille td.statut { width: 7.5mm; text-align: center; }
+  .grille td.notes { font-size: 8pt; }
+  .case { display: inline-block; width: 5.5mm; height: 5.5mm;
+          border: 0.4mm solid #666; border-radius: 1mm; vertical-align: middle; }
+  .week-end td { border-bottom-width: 0.8mm; border-bottom-color: #444; }
+  .milestone td { background: #f3e8d9; }
+  .milestone td.jour { color: #b45309; }
+  .bilan-tag { font-size: 7pt; font-weight: 700; color: #b45309;
+               text-transform: uppercase; letter-spacing: 0.4px; }
+
+  /* ---------- Pied de page / bilan ---------- */
+  footer { margin-top: 3.5mm; border-top: 1.2mm solid #1a1a1a; padding-top: 2.5mm; }
+  .bilan { display: flex; gap: 6mm; font-size: 10pt; align-items: stretch; }
+  .compteur { flex: 1; border: 0.4mm solid #1a1a1a; border-radius: 1.5mm; padding: 2mm 3mm; }
+  .compteur .lbl { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.4px;
+                   color: #555; margin-bottom: 1mm; }
+  .compteur .val { font-size: 13pt; font-weight: 700; }
+  .compteur .val small { font-size: 9pt; font-weight: 400; color: #777; }
+  .recompense { flex: 2.2; border: 0.4mm dashed #b45309; border-radius: 1.5mm;
+                padding: 2mm 3mm; background: #fdf6ec; }
+  .recompense .lbl { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.4px;
+                     color: #b45309; font-weight: 700; margin-bottom: 1mm; }
+  .recompense .ligne { border-bottom: 0.4mm solid #b45309; height: 6mm; }
+
+  @media screen {
+    body { background: #e8e8e8; padding: 10mm 0; }
+    .page { background: #fff; padding: 10mm; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="titre-ligne">
+      <h1>Programme <span class="accent">90 jours</span> — Suivi de routine</h1>
+      <div class="devise">« La discipline est le pont entre les objectifs et l'accomplissement. »</div>
+    </div>
+    <div class="infos">
+      <div class="champ"><label>Ma routine :</label><span class="ligne"></span></div>
+      <div class="champ"><label>Mon objectif :</label><span class="ligne"></span></div>
+      <div class="champ" style="flex:0.5"><label>Début :</label><span class="ligne"></span></div>
+      <div class="champ" style="flex:0.5"><label>Fin (J90) :</label><span class="ligne"></span></div>
+    </div>
+    <div class="legende">
+      <div class="item"><span class="sym ok">✓</span> Routine réalisée</div>
+      <div class="item"><span class="sym partiel"><span class="demi"></span></span> Partiellement réalisée</div>
+      <div class="item"><span class="sym non">✗</span> Non réalisée</div>
+      <div class="item" style="margin-left:auto; color:#555;">Trait épais = fin de semaine &nbsp;•&nbsp; Lignes orangées = bilans (J30, J60, J90)</div>
+    </div>
+  </header>
+
+  <div class="colonnes">
+  <table class="grille">
+    <thead>
+      <tr>
+        <th class="jour">Jour</th>
+        <th class="date">Date</th>
+        <th class="statut">✓</th>
+        <th class="statut"><span class="demi inv"></span></th>
+        <th class="statut">✗</th>
+        <th class="notes">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="">
+        <td class="jour">1</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">2</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">3</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">4</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">5</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">6</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">7</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">8</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">9</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">10</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">11</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">12</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">13</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">14</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">15</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">16</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">17</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">18</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="grille">
+    <thead>
+      <tr>
+        <th class="jour">Jour</th>
+        <th class="date">Date</th>
+        <th class="statut">✓</th>
+        <th class="statut"><span class="demi inv"></span></th>
+        <th class="statut">✗</th>
+        <th class="notes">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="">
+        <td class="jour">19</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">20</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">21</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">22</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">23</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">24</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">25</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">26</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">27</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">28</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">29</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="milestone">
+        <td class="jour">30</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"><span class="bilan-tag">Bilan 30 j</span></td>
+      </tr>
+      <tr class="">
+        <td class="jour">31</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">32</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">33</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">34</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">35</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">36</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="grille">
+    <thead>
+      <tr>
+        <th class="jour">Jour</th>
+        <th class="date">Date</th>
+        <th class="statut">✓</th>
+        <th class="statut"><span class="demi inv"></span></th>
+        <th class="statut">✗</th>
+        <th class="notes">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="">
+        <td class="jour">37</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">38</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">39</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">40</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">41</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">42</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">43</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">44</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">45</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">46</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">47</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">48</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">49</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">50</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">51</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">52</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">53</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">54</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="grille">
+    <thead>
+      <tr>
+        <th class="jour">Jour</th>
+        <th class="date">Date</th>
+        <th class="statut">✓</th>
+        <th class="statut"><span class="demi inv"></span></th>
+        <th class="statut">✗</th>
+        <th class="notes">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="">
+        <td class="jour">55</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">56</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">57</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">58</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">59</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="milestone">
+        <td class="jour">60</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"><span class="bilan-tag">Bilan 60 j</span></td>
+      </tr>
+      <tr class="">
+        <td class="jour">61</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">62</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">63</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">64</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">65</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">66</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">67</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">68</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">69</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">70</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">71</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">72</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="grille">
+    <thead>
+      <tr>
+        <th class="jour">Jour</th>
+        <th class="date">Date</th>
+        <th class="statut">✓</th>
+        <th class="statut"><span class="demi inv"></span></th>
+        <th class="statut">✗</th>
+        <th class="notes">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="">
+        <td class="jour">73</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">74</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">75</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">76</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">77</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">78</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">79</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">80</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">81</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">82</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">83</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="week-end">
+        <td class="jour">84</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">85</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">86</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">87</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">88</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="">
+        <td class="jour">89</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="milestone">
+        <td class="jour">90</td>
+        <td class="date"></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="statut"><span class="case"></span></td>
+        <td class="notes"><span class="bilan-tag">Bilan 90 j</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <footer>
+    <div class="bilan">
+      <div class="compteur"><div class="lbl">Jours réalisés ✓</div><div class="val">______ <small>/ 90</small></div></div>
+      <div class="compteur"><div class="lbl">Jours partiels <span class="demi" style="width:3mm;height:3mm;"></span></div><div class="val">______ <small>/ 90</small></div></div>
+      <div class="compteur"><div class="lbl">Jours manqués ✗</div><div class="val">______ <small>/ 90</small></div></div>
+      <div class="compteur"><div class="lbl">Meilleure série</div><div class="val">______ <small>jours d'affilée</small></div></div>
+      <div class="recompense"><div class="lbl">🎯 Ma récompense si je tiens les 90 jours</div><div class="ligne"></div></div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
