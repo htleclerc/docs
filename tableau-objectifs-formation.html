@@ -13,38 +13,51 @@
     print-color-adjust: exact;
   }
   .page { width: 279mm; margin: 0 auto; }
+  .page2 { page-break-before: always; }
 
-  header { border-bottom: 1mm solid #1a1a1a; padding-bottom: 2mm; margin-bottom: 3mm; }
+  header { border-bottom: 1mm solid #1a1a1a; padding-bottom: 2mm; margin-bottom: 2.5mm; }
   .titre-ligne { display: flex; justify-content: space-between; align-items: baseline; }
-  h1 { font-size: 17pt; letter-spacing: 0.5px; text-transform: uppercase; }
+  h1 { font-size: 16pt; letter-spacing: 0.5px; text-transform: uppercase; }
   h1 .accent { color: #b45309; }
   .devise { font-size: 8.5pt; font-style: italic; color: #555; }
 
-  .infos { display: flex; gap: 6mm; margin-top: 2.5mm; font-size: 9pt; }
+  .infos { display: flex; gap: 6mm; margin-top: 2mm; font-size: 9pt; }
   .champ { flex: 1; display: flex; align-items: baseline; gap: 1.5mm; }
   .champ label { font-weight: 700; white-space: nowrap; }
   .champ .ligne { flex: 1; border-bottom: 0.35mm solid #888; height: 5mm; }
+  .champ .ligne.rempli { font-weight: 700; color: #b45309; text-align: center; }
 
-  table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 8.5pt; }
-  th, td { border: 0.3mm solid #999; padding: 0 1.5mm; height: 10.6mm; }
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 8pt; }
+  th, td { border: 0.3mm solid #999; padding: 0 1.5mm; height: 8.6mm; }
   thead th {
-    background: #1a1a1a; color: #fff; font-size: 7.5pt; height: 9mm; line-height: 1.25;
+    background: #1a1a1a; color: #fff; font-size: 7.5pt; height: 8mm; line-height: 1.25;
     text-transform: uppercase; letter-spacing: 0.3px;
   }
-  th.num, td.num { width: 8mm; text-align: center; font-weight: 700; }
-  th.module { width: 50mm; }
-  th.objectif { width: 58mm; }
-  th.date, td.date { width: 17mm; }
-  th.avancement, td.avancement { width: 48mm; }
+  th.num, td.num { width: 9mm; text-align: center; font-weight: 700; }
+  th.module { width: 52mm; }
+  td.module { font-weight: 700; }
+  th.objectif { width: 56mm; }
+  td.objectif { font-size: 7.5pt; }
+  th.date, td.date { width: 16mm; }
+  th.avancement, td.avancement { width: 46mm; }
   th.fini, td.fini { width: 13mm; text-align: center; }
   td.avancement { text-align: center; }
-  .pct { font-size: 7pt; color: #555; margin: 0 0.5mm; white-space: nowrap; }
-  .case { display: inline-block; width: 4.5mm; height: 4.5mm;
+  td.notes { font-size: 7.5pt; }
+  .pct { font-size: 6.5pt; color: #555; margin: 0 0.4mm; white-space: nowrap; }
+  .case { display: inline-block; width: 4.2mm; height: 4.2mm;
           border: 0.35mm solid #666; border-radius: 0.8mm; vertical-align: middle;
-          margin-right: 0.6mm; }
-  .case.grande { width: 5.5mm; height: 5.5mm; margin: 0; }
+          margin-right: 0.5mm; background: #fff; }
+  .case.grande { width: 5.2mm; height: 5.2mm; margin: 0; }
+  .case.cochee { border-color: #2e7d32; color: #2e7d32; font-weight: 700;
+                 font-size: 8pt; text-align: center; line-height: 4.6mm; background: #d1e7d1; }
+  tr.section td { background: #b45309; color: #fff; font-weight: 700; font-size: 8pt;
+                  text-align: center; text-transform: uppercase; letter-spacing: 0.5px;
+                  height: 5.5mm; }
+  tr.fini-ligne td { background: #efefef; color: #777; }
+  tr.encours-ligne td { background: #fdf6ec; }
+  .fait-txt { color: #2e7d32; font-weight: 700; }
 
-  footer { margin-top: 3mm; border-top: 1mm solid #1a1a1a; padding-top: 2mm; }
+  footer { margin-top: 2.5mm; border-top: 1mm solid #1a1a1a; padding-top: 2mm; }
   .bilan { display: flex; gap: 5mm; font-size: 9pt; align-items: stretch; }
   .compteur { flex: 1; border: 0.35mm solid #1a1a1a; border-radius: 1.5mm; padding: 1.5mm 2.5mm; }
   .compteur .lbl { font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.4px;
@@ -57,9 +70,19 @@
                      color: #b45309; font-weight: 700; margin-bottom: 0.8mm; }
   .recompense .ligne { border-bottom: 0.35mm solid #b45309; height: 5mm; }
 
+  /* Page 2 : tâches */
+  h2 { font-size: 14pt; text-transform: uppercase; letter-spacing: 0.5px; }
+  h2 .accent { color: #b45309; }
+  .soustitre { font-size: 8.5pt; color: #555; font-style: italic; margin-top: 1mm; }
+  th.tmodule, td.tmodule { width: 48mm; font-weight: 700; font-size: 8pt; }
+  th.ttache { width: 78mm; }
+  th.tdate, td.tdate { width: 20mm; text-align: center; }
+  th.trendu, td.trendu { width: 16mm; text-align: center; }
+  .page2 td { height: 10.8mm; }
+
   @media screen {
     body { background: #e8e8e8; padding: 8mm 0; }
-    .page { background: #fff; padding: 9mm; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+    .page { background: #fff; padding: 9mm; box-shadow: 0 2px 12px rgba(0,0,0,.25); margin-bottom: 8mm; }
   }
 </style>
 </head>
@@ -72,8 +95,8 @@
     </div>
     <div class="infos">
       <div class="champ"><label>Nom / Prénom :</label><span class="ligne"></span></div>
-      <div class="champ"><label>Début formation :</label><span class="ligne"></span></div>
-      <div class="champ"><label>Fin visée :</label><span class="ligne"></span></div>
+      <div class="champ" style="flex:0.8"><label>Rythme :</label><span class="ligne rempli">3 h / jour</span></div>
+      <div class="champ" style="flex:0.8"><label>Fin visée :</label><span class="ligne"></span></div>
       <div class="champ" style="flex:1.6"><label>Mon objectif final :</label><span class="ligne"></span></div>
     </div>
   </header>
@@ -88,187 +111,198 @@
         <th class="date">Date limite</th>
         <th class="avancement">Avancement (%)</th>
         <th class="fini">Terminé ✓</th>
-        <th class="notes">Notes / prochaines actions</th>
+        <th class="notes">Notes</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr class="fini-ligne">
         <td class="num">1</td>
-        <td class="module"></td>
+        <td class="module">Module 1</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
-          <span class="pct"><span class="case"></span>50</span>
-          <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
-        <td class="fini"><span class="case grande"></span></td>
+        <td class="avancement"><span class="fait-txt">100 % ✓</span></td>
+        <td class="fini"><span class="case grande cochee">✓</span></td>
         <td class="notes"></td>
       </tr>
-      <tr>
+      <tr class="fini-ligne">
         <td class="num">2</td>
-        <td class="module"></td>
+        <td class="module">Module 2</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
-          <span class="pct"><span class="case"></span>50</span>
-          <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
-        <td class="fini"><span class="case grande"></span></td>
+        <td class="avancement"><span class="fait-txt">100 % ✓</span></td>
+        <td class="fini"><span class="case grande cochee">✓</span></td>
         <td class="notes"></td>
       </tr>
-      <tr>
+      <tr class="fini-ligne">
         <td class="num">3</td>
-        <td class="module"></td>
+        <td class="module">Module 3</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
-          <span class="pct"><span class="case"></span>50</span>
-          <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
-        <td class="fini"><span class="case grande"></span></td>
+        <td class="avancement"><span class="fait-txt">100 % ✓</span></td>
+        <td class="fini"><span class="case grande cochee">✓</span></td>
         <td class="notes"></td>
       </tr>
-      <tr>
+      <tr class="fini-ligne">
         <td class="num">4</td>
-        <td class="module"></td>
+        <td class="module">Module 4</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
-          <span class="pct"><span class="case"></span>50</span>
-          <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
-        <td class="fini"><span class="case grande"></span></td>
+        <td class="avancement"><span class="fait-txt">100 % ✓</span></td>
+        <td class="fini"><span class="case grande cochee">✓</span></td>
         <td class="notes"></td>
       </tr>
-      <tr>
+      <tr class="fini-ligne">
         <td class="num">5</td>
-        <td class="module"></td>
+        <td class="module">Module 5</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
-          <span class="pct"><span class="case"></span>50</span>
-          <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
-        <td class="fini"><span class="case grande"></span></td>
+        <td class="avancement"><span class="fait-txt">100 % ✓</span></td>
+        <td class="fini"><span class="case grande cochee">✓</span></td>
         <td class="notes"></td>
       </tr>
-      <tr>
+      <tr class="fini-ligne">
         <td class="num">6</td>
-        <td class="module"></td>
+        <td class="module">Module 6</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
-          <span class="pct"><span class="case"></span>50</span>
-          <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
-        <td class="fini"><span class="case grande"></span></td>
+        <td class="avancement"><span class="fait-txt">100 % ✓</span></td>
+        <td class="fini"><span class="case grande cochee">✓</span></td>
         <td class="notes"></td>
       </tr>
-      <tr>
+      <tr class="encours-ligne">
         <td class="num">7</td>
-        <td class="module"></td>
-        <td class="objectif"></td>
+        <td class="module">Finition intérieure</td>
+        <td class="objectif">Rendre les 3 planches : revêtements de sol, luminaires, autres finitions</td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
           <span class="pct"><span class="case"></span>50</span>
           <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
+          <span class="pct"><span class="case"></span>100</span></td>
         <td class="fini"><span class="case grande"></span></td>
-        <td class="notes"></td>
+        <td class="notes"><em>Module en cours</em></td>
       </tr>
       <tr>
         <td class="num">8</td>
-        <td class="module"></td>
+        <td class="module">Décoration textile</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
           <span class="pct"><span class="case"></span>50</span>
           <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
+          <span class="pct"><span class="case"></span>100</span></td>
         <td class="fini"><span class="case grande"></span></td>
         <td class="notes"></td>
       </tr>
       <tr>
         <td class="num">9</td>
-        <td class="module"></td>
+        <td class="module">Mobilier et accessoires</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
           <span class="pct"><span class="case"></span>50</span>
           <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
+          <span class="pct"><span class="case"></span>100</span></td>
         <td class="fini"><span class="case grande"></span></td>
         <td class="notes"></td>
       </tr>
       <tr>
         <td class="num">10</td>
-        <td class="module"></td>
+        <td class="module">Relation clientèle</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
           <span class="pct"><span class="case"></span>50</span>
           <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
+          <span class="pct"><span class="case"></span>100</span></td>
         <td class="fini"><span class="case grande"></span></td>
         <td class="notes"></td>
       </tr>
       <tr>
         <td class="num">11</td>
-        <td class="module"></td>
+        <td class="module">Communication visuelle</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
           <span class="pct"><span class="case"></span>50</span>
           <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
+          <span class="pct"><span class="case"></span>100</span></td>
         <td class="fini"><span class="case grande"></span></td>
         <td class="notes"></td>
       </tr>
       <tr>
         <td class="num">12</td>
-        <td class="module"></td>
+        <td class="module">Créer son agence de décoration</td>
         <td class="objectif"></td>
         <td class="date"></td>
         <td class="date"></td>
-        <td class="avancement">
-          <span class="pct"><span class="case"></span>25</span>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
           <span class="pct"><span class="case"></span>50</span>
           <span class="pct"><span class="case"></span>75</span>
-          <span class="pct"><span class="case"></span>100</span>
-        </td>
+          <span class="pct"><span class="case"></span>100</span></td>
+        <td class="fini"><span class="case grande"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr class="section"><td colspan="8">MODULES AVANCÉS</td></tr>
+      <tr>
+        <td class="num">A1</td>
+        <td class="module">Sketchup</td>
+        <td class="objectif"></td>
+        <td class="date"></td>
+        <td class="date"></td>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
+          <span class="pct"><span class="case"></span>50</span>
+          <span class="pct"><span class="case"></span>75</span>
+          <span class="pct"><span class="case"></span>100</span></td>
+        <td class="fini"><span class="case grande"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr>
+        <td class="num">A2</td>
+        <td class="module">Home staging</td>
+        <td class="objectif"></td>
+        <td class="date"></td>
+        <td class="date"></td>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
+          <span class="pct"><span class="case"></span>50</span>
+          <span class="pct"><span class="case"></span>75</span>
+          <span class="pct"><span class="case"></span>100</span></td>
+        <td class="fini"><span class="case grande"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr>
+        <td class="num">A3</td>
+        <td class="module">Cuisine et salle de bain en décoration d’intérieur</td>
+        <td class="objectif"></td>
+        <td class="date"></td>
+        <td class="date"></td>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
+          <span class="pct"><span class="case"></span>50</span>
+          <span class="pct"><span class="case"></span>75</span>
+          <span class="pct"><span class="case"></span>100</span></td>
+        <td class="fini"><span class="case grande"></span></td>
+        <td class="notes"></td>
+      </tr>
+      <tr>
+        <td class="num">A4</td>
+        <td class="module">Design commercial</td>
+        <td class="objectif"></td>
+        <td class="date"></td>
+        <td class="date"></td>
+        <td class="avancement"><span class="pct"><span class="case"></span>25</span>
+          <span class="pct"><span class="case"></span>50</span>
+          <span class="pct"><span class="case"></span>75</span>
+          <span class="pct"><span class="case"></span>100</span></td>
         <td class="fini"><span class="case grande"></span></td>
         <td class="notes"></td>
       </tr>
@@ -277,12 +311,133 @@
 
   <footer>
     <div class="bilan">
-      <div class="compteur"><div class="lbl">Modules terminés</div><div class="val">______ <small>/ ______</small></div></div>
-      <div class="compteur"><div class="lbl">Module en cours</div><div class="val">n° ______</div></div>
+      <div class="compteur"><div class="lbl">Modules terminés</div><div class="val">6 <small>/ 16</small></div></div>
+      <div class="compteur"><div class="lbl">Module en cours</div><div class="val">n° 7</div></div>
       <div class="compteur"><div class="lbl">Prochaine échéance</div><div class="val">______</div></div>
       <div class="recompense"><div class="lbl">🎯 Ma récompense quand tous les modules seront terminés</div><div class="ligne"></div></div>
     </div>
   </footer>
+</div>
+
+<div class="page page2">
+  <header>
+    <div class="titre-ligne">
+      <h2>Tâches / livrables à rendre <span class="accent">par module</span></h2>
+      <div class="devise">Notez chaque planche ou devoir à rendre, et cochez quand c'est envoyé.</div>
+    </div>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="tmodule">Module</th>
+        <th class="ttache">Tâche / livrable à rendre</th>
+        <th class="tdate">Date limite</th>
+        <th class="trendu">Rendu ✓</th>
+        <th class="tnotes">Retour du formateur / notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tmodule">7 — Finition intérieure</td>
+        <td class="ttache">Planche revêtements de sol</td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule">7 — Finition intérieure</td>
+        <td class="ttache">Planche luminaires</td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule">7 — Finition intérieure</td>
+        <td class="ttache">Planche autres finitions</td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+      <tr>
+        <td class="tmodule"></td>
+        <td class="ttache"></td>
+        <td class="tdate"></td>
+        <td class="trendu"><span class="case grande"></span></td>
+        <td class="tnotes"></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 </body>
 </html>
